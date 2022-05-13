@@ -1,0 +1,59 @@
+body {
+  background-color: $body-color;
+  font-size: 10px;
+  box-sizing: border-box;
+  font-family: "Didot";
+  overflow-x: hidden;
+}
+img {
+  width: 100%;
+}
+.more {
+  background-color: $button-color;
+  cursor: pointer;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  padding: 20px 72px;
+  // display: block;
+  color: $light;
+  text-decoration: none;
+  font-size: 1.9rem;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.main-h2 {
+  width: 100%;
+  color: black;
+  font-size: 3.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1500px) {
+  .main-h2 {
+    font-size: 2.5rem;
+  }
+  .more {
+    padding: 15px 60px;
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .main-h2 {
+    font-size: 2.1rem;
+  }
+  .more {
+    padding: 15px 50px;
+    font-size: 1.5rem;
+  }
+}
+
+// .mobile-main,
+// .mobile-main-service,
+// .mobile-main-contact,
+// .content-mobile-subpage {
+//   display: none;
+// }

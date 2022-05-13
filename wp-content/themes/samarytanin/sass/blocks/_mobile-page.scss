@@ -1,0 +1,244 @@
+@media (max-width: 768px) {
+  .content-header {
+    display: none;
+  }
+
+  .content-mobile-subpage {
+    display: block;
+    @include flex;
+    padding-bottom: 300px;
+    .one {
+      width: 35%;
+      position: relative;
+    }
+    .one-text {
+      z-index: 10;
+      @include position(absolute, 93%, auto, auto, 20%);
+      width: 100%;
+      background-color: #253028;
+      color: #fffdf8;
+      width: 150%;
+      .one-h2 {
+        text-transform: uppercase;
+        font-size: 4rem;
+        margin: 0 0 -15px;
+        padding: 65px 40px 0px 0px;
+        letter-spacing: 2px;
+      }
+    }
+    .two {
+      width: 65%;
+      position: relative;
+    }
+    .image-main {
+      @include position(absolute, 28%, auto, auto, -27%);
+      width: 100%;
+    }
+  }
+
+  // Service page mobile
+
+  .service-page-head {
+    padding: 70px 0;
+    p {
+      width: 85%;
+      font-size: 1.4rem;
+    }
+  }
+  .service-page-text {
+    width: 85%;
+    padding: 80px 0 200px;
+    h3 {
+      font-size: 1.6rem;
+      letter-spacing: $letter-spacing-paragraph;
+    }
+    p {
+      font-size: 1.4rem;
+      margin: 4px;
+    }
+  }
+
+  // Contact page mobile
+  .contact-page {
+    background-image: linear-gradient(
+      to right,
+      $body-color 15%,
+      $contact-color 15%,
+      $contact-color 29%,
+      $body-color 29%
+    );
+    padding: 20px 0 30px;
+    &-one {
+      width: 100%;
+      @include flex;
+      @include center;
+    }
+    &-text {
+      padding: 5px 15px 5px 0;
+      .contact-image-small {
+        width: 10%;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+    .contact-paragraph {
+      width: 53%;
+      p {
+        font-size: 1.3rem;
+        margin: 0px 10px;
+      }
+    }
+    &-h3 {
+      @include position(static, auto, auto, auto, auto);
+      width: 25%;
+      padding: 20px 65px;
+      font-size: 1.7rem;
+    }
+  }
+  .padding-contact {
+    display: none;
+  }
+
+  //About page
+
+  .about-page {
+    &-image {
+      width: 80%;
+    }
+    &-person {
+      @include position(absolute, 2%, auto, auto, 17%);
+      width: 60%;
+    }
+    .person-box {
+      width: 45%;
+    }
+    .person-image-name {
+      @include position(absolute, auto, auto, 13%, auto);
+      font-size: 1.6rem;
+    }
+    .person-image-function {
+      font-size: 1.4rem;
+    }
+    .about-page-text {
+      width: 90%;
+      padding: 220px 0 200px;
+      p {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .content-mobile-subpage {
+    padding-bottom: 230px;
+    .one-text {
+      @include position(absolute, 95%, auto, auto, 20%);
+      width: 175%;
+      .one-h2 {
+        text-transform: uppercase;
+        font-size: 2.3rem;
+        margin: 0 0 -8px;
+        padding: 35px 40px 0px 0px;
+      }
+    }
+    .image-main {
+      @include position(absolute, 28%, auto, auto, -32%);
+      width: 110%;
+    }
+  }
+
+  // Service page text content
+
+  .service-page-head {
+    padding: 70px 0;
+    p {
+      width: 90%;
+      font-size: 1.2rem;
+    }
+  }
+  .service-page-text {
+    width: 90%;
+    padding: 70px 0 170px;
+    h3 {
+      font-size: 1.4rem;
+      letter-spacing: $letter-spacing-paragraph;
+    }
+    p {
+      font-size: 1.2rem;
+      margin: 10px 5px;
+    }
+  }
+
+  // Contact page mobile
+  .contact-page {
+    // background-color: $contact-color;
+    background-image: linear-gradient(
+      to right,
+      $body-color 0%,
+      $contact-color 0%,
+      $contact-color 20%,
+      $body-color 20%
+    );
+    padding: 20px 0 30px;
+    &-one {
+      width: 100%;
+    }
+    &-text {
+      padding: 10px 0px 10px 5px;
+      .contact-image-small {
+        width: 15%;
+        padding: 5px;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+    .contact-paragraph {
+      width: 80%;
+      p {
+        font-size: 1.4rem;
+        margin: 5px 10px 5px 10px;
+      }
+    }
+    &-h3 {
+      @include position(static, auto, auto, auto, auto);
+      width: 32%;
+      padding: 20px 65px;
+      font-size: 1.5rem;
+    }
+  }
+
+  //About page
+
+  .about-page {
+    &-image {
+      width: 100%;
+    }
+    &-person {
+      @include position(absolute, 1%, auto, auto, 5%);
+      width: 90%;
+    }
+    .person-box {
+      width: 50%;
+    }
+    .person-image-name {
+      @include position(absolute, auto, auto, 15%, auto);
+      font-size: 1.2rem;
+    }
+    .person-image-function {
+      font-size: 1.1rem;
+    }
+    .about-page-text {
+      width: 80%;
+      padding: 200px 0 150px;
+      p {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

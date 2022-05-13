@@ -1,0 +1,103 @@
+.services {
+  position: relative;
+  padding-bottom: 300px;
+  @include flex;
+  justify-content: center;
+  margin: 0 auto;
+  .services-img {
+    width: 78%;
+    margin: 0 auto;
+  }
+  .main-h2 {
+    text-align: center;
+    margin: 80px 10px 0;
+  }
+  .service-center {
+    @include position(absolute, 14%, auto, auto, auto);
+    width: 43%;
+    height: auto;
+    background-color: $body-color;
+    @include flex;
+    @include center;
+  }
+  .service-text {
+    @include flex;
+    @include center;
+    align-content: center;
+    width: 100%;
+  }
+
+  .service-paragraph-box {
+    @include flex;
+    @include center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 5%;
+    .service-paragraph {
+      text-align: center;
+      font-size: $font-size-paragraph;
+      font-weight: $font-weight-paragraph;
+      letter-spacing: $letter-spacing-paragraph;
+      padding: 0;
+      margin: 5px;
+    }
+  }
+  .more {
+    margin: 25px 0 30px;
+  }
+}
+
+@media (max-width: 1500px) {
+  .services {
+    .main-h2 {
+      margin: 30px 10px 0;
+    }
+    .service-paragraph-box {
+      margin: 0 auto;
+      .service-paragraph {
+        font-size: $font-size-paragraph-large;
+      }
+    }
+    .service-center {
+      @include position(absolute, 10%, auto, auto, auto);
+    }
+  }
+}
+
+@media (max-width: 1025px) {
+  .services {
+    .services-img {
+      width: 95%;
+    }
+    .main-h2 {
+      margin: 30px 10px 0;
+    }
+    .service-paragraph-box {
+      padding: 20px 2% 0px;
+      margin: 0;
+      .service-paragraph {
+        font-size: $font-size-paragraph-s-large;
+      }
+    }
+    .service-center {
+      @include position(absolute, 7%, auto, auto, auto);
+    }
+    .more {
+      margin: 10px 0 20px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .services {
+    display: none;
+  }
+}
+
+@media (min-width: 767px) {
+  #two {
+    .mobile-main-service {
+      display: none;
+    }
+  }
+}

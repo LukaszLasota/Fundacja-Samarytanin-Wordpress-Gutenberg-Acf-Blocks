@@ -1,0 +1,123 @@
+.content {
+  @include flex;
+  padding-bottom: 500px;
+  .one {
+    width: 50%;
+    position: relative;
+  }
+  .one-text {
+    z-index: 10;
+    @include position(absolute, 60%, 0, auto, auto);
+    width: 75%;
+    blockquote {
+      margin: 0;
+      padding: 0;
+    }
+    .one-blockquote {
+      text-transform: uppercase;
+      font-size: 3.2rem;
+      margin: 0;
+      padding: 5px 40px;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+    .color-bg {
+      background-color: #253028;
+      color: #fffdf8;
+    }
+    .color-txt {
+      color: #253028;
+    }
+  }
+  .two {
+    width: 50%;
+    position: relative;
+  }
+  .image-main {
+    @include position(absolute, 20%, auto, auto, -22%);
+    width: 90%;
+  }
+}
+
+@media (max-width: 1600px) {
+  .content {
+    .one-text {
+      .one-blockquote {
+        font-size: 2.7rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  .content {
+    padding-bottom: 350px;
+    .one-text {
+      @include position(absolute, 60%, 0, auto, auto);
+      width: 75%;
+      .one-blockquote {
+        font-size: 2.3rem;
+        padding: 7px 40px;
+      }
+    }
+    .image-main {
+      @include position(absolute, 20%, auto, auto, -22%);
+    }
+  }
+}
+
+@media (max-width: 1025px) {
+  .content {
+    .one-text {
+      .one-blockquote {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding-bottom: 300px;
+    .one {
+      width: 35%;
+    }
+    .one-text {
+      @include position(absolute, 90%, auto, auto, 22%);
+      width: 160%;
+      .one-blockquote {
+        text-transform: uppercase;
+        font-size: 2.1rem;
+      }
+    }
+    .two {
+      width: 65%;
+    }
+    .image-main {
+      @include position(absolute, 25%, auto, auto, -22%);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding-bottom: 250px;
+    .one {
+      width: 35%;
+    }
+    .one-text {
+      @include position(absolute, 105%, auto, auto, 22%);
+      width: 190%;
+      .one-blockquote {
+        font-size: 1.1rem;
+      }
+    }
+    .two {
+      width: 65%;
+    }
+    .image-main {
+      @include position(absolute, 25%, auto, auto, -32%);
+      width: 110%;
+    }
+  }
+}

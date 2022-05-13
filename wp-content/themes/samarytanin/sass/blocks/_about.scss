@@ -1,0 +1,96 @@
+.about {
+  position: relative;
+  padding-bottom: 500px;
+  @include flex;
+  .about-one {
+    @include position(absolute, 0, 50%, 0, 0);
+    width: 50%;
+    height: 100%;
+  }
+  .about-one-white {
+    @include position(absolute, 7%, 20%, 20%, 20%);
+    width: 78%;
+    margin: 20px;
+    background-color: $body-color;
+  }
+  .about-one-image {
+    @include position(absolute, 5%, 5%, 5%, 5%);
+    width: 85%;
+    padding: 15px;
+  }
+  .about-two {
+    @include position(absolute, 0, 0, 0, 50%);
+    width: 50%;
+    height: 100%;
+  }
+  .about-two-white {
+    @include position(absolute, 8%, 22%, 55%, 8%);
+    background-color: $body-color;
+    display: flex;
+    justify-content: center;
+  }
+  .about-two-text {
+    width: 100%;
+    padding: 55px;
+    @include flex;
+    @include start;
+  }
+  .about-two-paragraph {
+    width: 100%;
+    font-size: $font-size-paragraph;
+    font-weight: $font-weight-paragraph;
+    margin: 0;
+    p {
+      margin: 5px;
+      letter-spacing: $letter-spacing-paragraph;
+    }
+  }
+  .main-h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  .more {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 1500px) {
+  .about {
+    padding-bottom: 400px;
+    .about-two-paragraph {
+      font-size: $font-size-paragraph-large;
+      margin: 5px 0 20px;
+      p {
+        margin: 5px;
+        letter-spacing: $letter-spacing-paragraph;
+      }
+    }
+    .about-two-white {
+      @include position(absolute, 8%, 22%, 50%, 8%);
+    }
+  }
+}
+
+@media (max-width: 1025px) {
+  .about {
+    .about-two-paragraph {
+      font-size: $font-size-paragraph-s-large;
+    }
+    .about-two-text {
+      padding: 55px 40px 30px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    display: none;
+  }
+}
+@media (min-width: 767px) {
+  #one {
+    .mobile-main {
+      display: none;
+    }
+  }
+}
