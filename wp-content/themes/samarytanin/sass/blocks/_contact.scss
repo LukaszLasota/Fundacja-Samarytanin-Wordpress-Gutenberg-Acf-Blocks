@@ -1,0 +1,85 @@
+.contact {
+  //   height: auto;
+  overflow-x: hidden;
+  background-color: $contact-color;
+  @include flex;
+  @include center;
+  .contact-main {
+    width: 50%;
+    // height: 75%;
+    background-color: $body-color;
+    @include flex;
+    @include center;
+    padding: 90px 0 90px;
+    margin: 140px 0 140px;
+  }
+  .contact-img {
+    @include position(absolute, 50%, -50%, auto, auto);
+    width: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .contact-text {
+    @include flex;
+    // @include center;
+    padding-left: 8%;
+    position: relative;
+  }
+  .main-h2 {
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
+  .contact-image-small {
+    width: 9%;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .contact-paragraph {
+    width: 90%;
+    @include flex;
+    @include center;
+    margin: 0;
+    padding: 0;
+    p {
+      width: 100%;
+      font-size: 1.2rem;
+      font-weight: $font-weight-paragraph;
+      margin: 5px 10px;
+      word-wrap: break-word;
+    }
+  }
+  .more {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .contact {
+    .contact-main {
+      width: 65%;
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .contact {
+    .contact-main {
+      width: 90%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    display: none;
+  }
+}
+
+@media (min-width: 767px) {
+  #three {
+    .mobile-main-contact {
+      display: none;
+    }
+  }
+}

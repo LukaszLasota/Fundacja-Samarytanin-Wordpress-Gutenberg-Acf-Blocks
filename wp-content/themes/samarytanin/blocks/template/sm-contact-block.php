@@ -25,63 +25,131 @@ $align_class = $block['align'] ? 'align' . $block['align'] : '';
 
 // Load values and assing defaults.
 $title = get_field('title');
-$text = get_field('text');
-$text_two = get_field('text_two');
-$text_three = get_field('text_three');
-$image = get_field('image');
-$image_mobile = get_field('image_mobile');
+
+$address_one = get_field('address_one');
+$address_two = get_field('address_two');
+$image_address = get_field('image_address');
+
+$phone_one = get_field('phone_one');
+$phone_two = get_field('phone_two');
+$image_phone = get_field('image_phone');
+
+$days = get_field('days');
+$hours = get_field('hours');
+$image_hours = get_field('image_hours');
+
+$email = get_field('email');
+$image_mail = get_field('image_mail');
+
 $button_text = get_field('button_text');
 $button_link = get_field('button_link');
+$image = get_field('image');
+$image_mobile = get_field('image_mobile');
+
 ?>
 
-<article id="two">
-    <section class="services">
-        <img 
-        class="services-img" 
-        src="<?php echo esc_url($image["url"]); ?>" 
-        alt="<?php echo esc_html_e($image["alt"]); ?>"
-        loading="lazy"
-        >
-        <div class="service-center">
-            <div class="service-text">
+    <article id="three">
+    <section class="contact" >  
+        <div class="contact-main">
+            
+            <div class="contact-text">
+                <img 
+                class="contact-img" 
+                src="<?php echo esc_url($image["url"]); ?>" 
+                alt="<?php echo esc_html_e($image["alt"]); ?>"
+                loading="lazy"
+                >
                 <h2 class="main-h2"><?php echo esc_html_e($title); ?></h2>
-                <div class="service-paragraph-box">
-                    <p class="service-paragraph"><?php echo esc_html_e($text); ?></p>
-                    <p class="service-paragraph"><?php echo esc_html_e($text_two); ?></p>
-                    <p class="service-paragraph"><?php echo esc_html_e($text_three); ?></p>
+                <div class="contact-image-small">
+                    <img class="" src="<?php echo esc_url($image_address["url"]); ?>" alt="<?php echo esc_html_e($image["alt"]); ?>" loading="lazy">
+                </div>
+                <div class="contact-paragraph">  
+                    <p class=""><?php echo esc_html_e($address_one); ?></p>
+                    <p class=""><?php echo esc_html_e($address_two); ?></p>
+                </div> 
+                <div class="contact-image-small">
+                    <img class="" src="<?php echo esc_url($image_phone["url"]); ?>" alt="<?php echo esc_html_e($image["alt"]); ?>" loading="lazy">
+                </div>
+                <div class="contact-paragraph"> 
+                    <p class=""><?php echo esc_html_e($phone_one); ?></p>
+                    <p class=""><?php echo esc_html_e($phone_two); ?></p>
+                </div>
+                <div class="contact-image-small">
+                    <img class="" src="<?php echo esc_url($image_hours["url"]); ?>" alt="<?php echo esc_html_e($image["alt"]); ?>" loading="lazy">
+                </div>
+                <div class="contact-paragraph">
+                    <p class=""><?php echo esc_html_e($days); ?></p>
+                    <p class=""><?php echo esc_html_e($hours); ?></p>
+                </div>
+                <div class="contact-image-small">
+                    <img class="" src="<?php echo esc_url($image_mail["url"]); ?>" alt="<?php echo esc_html_e($image["alt"]); ?>" loading="lazy">
+                </div>
+                <div class="contact-paragraph">
+                    <p class=""><?php echo esc_html_e($email); ?></p>
                 </div>
                 <a class="more" 
                 href="<?php echo esc_url(home_url( '/' ) . $button_link);  ?>">
                 <?php echo esc_html_e($button_text); ?>
                 </a>
             </div>
-        </div>
-    </section>
 
-    <section class="mobile-main-service">
+        </div>     
+    </section> 
+    
+    <section class="mobile-main-contact">
         <img 
-        src="<?php echo esc_url($image["url"]); ?>" 
-        alt="<?php echo esc_html_e($image["alt"]); ?>"
-        loading="lazy"
-        >
+            src="<?php echo esc_url($image_mobile["url"]); ?>" 
+            alt="<?php echo esc_html_e($image["alt"]); ?>"
+            loading="lazy">
             <div class="mobile-text">
+                 
                 <h2 class="main-h2"><?php echo esc_html_e($title); ?></h2>
-                    <div class="mobile-paragraph">
-                        <p ><?php echo esc_html_e($text); ?></p>
-                        <p><?php echo esc_html_e($text_two); ?></p>
-                        <p><?php echo esc_html_e($text_three); ?></p>
+        
+                <div class="contact-text-one">  
+                    <div class="contact-image-small">
+                       <img class="" src="<?php echo esc_url($image_address["url"]); ?>" alt="<?php echo esc_html_e($image["alt"]); ?>" loading="lazy">
                     </div>
-                    <a class="more" 
-                    href="<?php echo esc_url(home_url( '/' ) . $button_link);  ?>">
-                    <?php echo esc_html_e($button_text); ?>
-                    </a>
+                    <div class="contact-paragraph">  
+                        <p class=""><?php echo esc_html_e($address_one); ?></p>
+                    <p class=""><?php echo esc_html_e($address_two); ?></p>
+                    </div> 
+                </div> 
+                
+                <div class="contact-text-one">  
+                    <div class="contact-image-small">
+                        <img class="" src="<?php echo esc_url($image_phone["url"]); ?>" alt="<?php echo esc_html_e($image["alt"]); ?>" loading="lazy">
+                    </div>
+                    <div class="contact-paragraph"> 
+                        <p class=""><?php echo esc_html_e($phone_one); ?></p>
+                        <p class=""><?php echo esc_html_e($phone_two); ?></p>
+                    </div>
+                </div> 
+                
+                <div class="contact-text-one">  
+                    <div class="contact-image-small">
+                        <img class="" src="<?php echo esc_url($image_hours["url"]); ?>" alt="<?php echo esc_html_e($image["alt"]); ?>" loading="lazy">
+                    </div>
+                    <div class="contact-paragraph">
+                        <p class=""><?php echo esc_html_e($days); ?></p>
+                        <p class=""><?php echo esc_html_e($hours); ?></p>
+                    </div>    
+                </div>
+                
+                <div class="contact-text-one text-one-last">  
+                    <div class="contact-image-small">
+                        <img class="" src="<?php echo esc_url($image_mail["url"]); ?>" alt="<?php echo esc_html_e($image["alt"]); ?>" loading="lazy">
+                    </div>
+                    <div class="contact-paragraph">
+                        <p class=""><?php echo esc_html_e($email); ?></p>
+                        <!-- <p class="small-contact">fundacja.samarytanin2020 @wp.pl</p>
+                        <p class="medium-contact">fundacja.samarytanin2020@wp.pl</p> -->
+                    </div>
+                </div>
+                <a class="more" 
+                href="<?php echo esc_url(home_url( '/' ) . $button_link);  ?>">
+                <?php echo esc_html_e($button_text); ?>
+                </a>
             </div>
             <div class="mobile-bg"></div>
     </section>
-</article>
-
-
-
-
-
-
+</article> 

@@ -1,0 +1,431 @@
+.content-header {
+  @include flex;
+  &-one,
+  &-two {
+    width: 50%;
+    position: relative;
+  }
+  &-space {
+    @include position(absolute, 22%, auto, 0, auto);
+    width: 78%;
+    background: $body-color;
+  }
+  &-absolute {
+    @include position(absolute, 28%, auto, auto, auto);
+    width: 172%;
+    z-index: 10;
+  }
+  &-padding {
+    width: 100%;
+    padding: 200px 0;
+  }
+  &-h2 {
+    @include position(absolute, auto, auto, -7%, 12%);
+    z-index: 11;
+    padding: 0;
+    margin: 0;
+    color: $body-color;
+    font-size: 15rem;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+  .black {
+    color: black;
+  }
+}
+@media (max-width: 1600px) {
+  .content-header {
+    &-h2 {
+      @include position(absolute, auto, auto, -7%, 9%);
+      font-size: 10rem;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .content-header {
+    &-h2 {
+      font-size: 9rem;
+    }
+  }
+}
+
+// Mobile
+
+@media (min-width: 769px) {
+  .content-mobile-subpage {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-header {
+    display: none;
+  }
+
+  .content-mobile-subpage {
+    display: block;
+    @include flex;
+    padding-bottom: 300px;
+    .one {
+      width: 35%;
+      position: relative;
+    }
+    .one-text {
+      z-index: 10;
+      @include position(absolute, 93%, auto, auto, 20%);
+      width: 100%;
+      background-color: #253028;
+      color: #fffdf8;
+      width: 150%;
+      .one-h2 {
+        text-transform: uppercase;
+        font-size: 4rem;
+        margin: 0 0 -15px;
+        padding: 65px 40px 0px 0px;
+        letter-spacing: 2px;
+      }
+    }
+    .two {
+      width: 65%;
+      position: relative;
+    }
+    .image-main {
+      @include position(absolute, 28%, auto, auto, -27%);
+      width: 100%;
+    }
+  }
+}
+
+// Service page text content
+
+.service-page-head {
+  padding: 100px 0;
+  background-color: $contact-color;
+  text-align: center;
+  p {
+    width: 70%;
+    margin: 15px auto;
+    font-size: $font-size-paragraph;
+    font-weight: $font-weight-paragraph;
+    letter-spacing: $letter-spacing-paragraph;
+  }
+}
+.service-page-text {
+  width: 80%;
+  margin: 0 auto;
+  padding: 80px 0 300px;
+  h3 {
+    font-size: 1.9rem;
+    font-weight: normal;
+    font-weight: $font-weight-paragraph;
+    letter-spacing: $letter-spacing-paragraph;
+  }
+  p {
+    font-size: 1.5rem;
+    font-weight: $font-weight-paragraph;
+    letter-spacing: 1px;
+    margin: 3px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .service-page-head {
+    padding: 90px 0;
+    p {
+      width: 80%;
+      margin: 15px auto;
+      font-size: $font-size-paragraph;
+    }
+  }
+  .service-page-text {
+    width: 85%;
+    padding: 70px 0 250px;
+    h3 {
+      font-size: 1.9rem;
+    }
+    p {
+      font-size: 1.5rem;
+      margin: 7px 3px;
+    }
+  }
+}
+
+// Contact page content
+
+.contact-page {
+  background-color: $contact-color;
+  @include flex;
+  @include center;
+  padding: 60px 0 60px;
+  &-one {
+    width: 25%;
+    position: relative;
+  }
+  &-text {
+    @include flex;
+    @include center;
+    width: 100%;
+    padding: 10px 15px 10px 0;
+    .contact-image-small {
+      width: 15%;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  .contact-paragraph {
+    width: 85%;
+    @include flex;
+    @include center;
+    overflow-wrap: break-word;
+    p {
+      width: 100%;
+      font-size: 1.2rem;
+      font-weight: $font-weight-paragraph;
+      margin: 5px 10px;
+    }
+  }
+  &-h3 {
+    @include position(absolute, -56%, auto, auto, 10%);
+    padding: 20px 65px;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    background-color: $button-color;
+    font-size: 1.9rem;
+    letter-spacing: 2px;
+    text-align: center;
+    color: $light;
+  }
+}
+.padding-contact {
+  width: 100%;
+  padding: 150px 0;
+}
+
+@media (max-width: 1600px) {
+  .contact-page {
+    &-one {
+      width: 30%;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .contact-page {
+    &-one {
+      width: 33%;
+    }
+    &-text {
+      padding: 10px 0px;
+    }
+    .contact-paragraph {
+      width: 84%;
+      p {
+        font-size: 1.1rem;
+        margin: 5px;
+      }
+    }
+    &-h3 {
+      @include position(absolute, -50%, auto, auto, 10%);
+      padding: 20px 50px;
+      font-size: 1.6rem;
+    }
+  }
+  .padding-contact {
+    padding: 100px 0;
+  }
+}
+
+// About page content
+
+.about-page {
+  position: relative;
+  &-image {
+    width: 62%;
+  }
+  &-person {
+    @include position(absolute, 7%, auto, auto, 24%);
+    display: flex;
+    width: 35%;
+  }
+  .person-box {
+    position: relative;
+    width: 45%;
+    margin: 15px;
+    figure {
+      margin: 0;
+      width: 100%;
+    }
+  }
+  .person-image {
+    width: 100%;
+  }
+  .person-image-name {
+    @include position(absolute, auto, auto, 9%, auto);
+    z-index: 10;
+    width: 100%;
+    height: 20%;
+    background-color: $button-color;
+    color: $body-color;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    @include flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .person-image-function {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: $button-color;
+  }
+  .about-page-text {
+    width: 80%;
+    margin: 0 auto;
+    padding: 200px 0 300px;
+    p {
+      font-size: 1.5rem;
+      font-weight: $font-weight-paragraph;
+      letter-spacing: 1px;
+      margin: 6px;
+      text-align: center;
+    }
+    .about-page-text-space {
+      padding: 15px;
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1600px) {
+  .about-page {
+    &-image {
+      width: 65%;
+    }
+    .person-image-name {
+      @include position(absolute, auto, auto, 12%, auto);
+      font-size: 1.7rem;
+    }
+    .person-image-function {
+      font-size: 1.5rem;
+    }
+    .about-page-text {
+      width: 80%;
+      padding: 200px 0 250px;
+      p {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1025px) {
+  .about-page {
+    &-image {
+      width: 70%;
+    }
+    &-person {
+      @include position(absolute, 7%, auto, auto, 20%);
+      width: 45%;
+    }
+    .person-box {
+      width: 45%;
+    }
+    .person-image-name {
+      @include position(absolute, auto, auto, 13%, auto);
+      font-size: 1.7rem;
+    }
+    .person-image-function {
+      font-size: 1.5rem;
+    }
+    .about-page-text {
+      width: 80%;
+      padding: 200px 0 250px;
+      p {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+// Statut page content
+
+.statut-page-head {
+  padding: 100px 0 200px;
+  // background-color: $contact-color;
+  background-image: linear-gradient(
+    to bottom,
+    $body-color 0%,
+    $contact-color 0%,
+    $contact-color 30%,
+    $body-color 30%
+  );
+}
+
+.center-pdf {
+  margin: 0 auto;
+  width: 40%;
+  position: relative;
+  span {
+    font-size: 1.6rem;
+  }
+  .more {
+    font-weight: bold;
+    padding: 20px 40px;
+  }
+}
+
+#the-canvas {
+  border: 1px solid black;
+  direction: ltr;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 70px;
+}
+
+#prev,
+#next {
+  width: 50px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  img {
+    width: 100%;
+  }
+}
+
+#prev {
+  @include position(absolute, 50%, auto, auto, auto);
+  transform: translate(-50%, -50%);
+}
+
+#next {
+  @include position(absolute, 50%, auto, auto, 100%);
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+@media (max-width: 1600px) {
+  .center-pdf {
+    width: 60%;
+  }
+}
+
+@media (max-width: 1025px) {
+  .center-pdf {
+    width: 80%;
+  }
+}
+
+@media (max-width: 600px) {
+  .center-pdf {
+    width: 90%;
+    span {
+      font-size: 1.6rem;
+    }
+  }
+  #prev,
+  #next {
+    width: 30px;
+  }
+}

@@ -53,7 +53,7 @@
   .content {
     padding-bottom: 350px;
     .one-text {
-      @include position(absolute, 60%, 0, auto, auto);
+      @include position(absolute, 70%, 0, auto, auto);
       width: 75%;
       .one-blockquote {
         font-size: 2.3rem;
@@ -69,6 +69,8 @@
 @media (max-width: 1025px) {
   .content {
     .one-text {
+      @include position(absolute, 80%, 0, auto, 15%);
+      width: 100%;
       .one-blockquote {
         font-size: 2rem;
       }
@@ -76,7 +78,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 769px) {
   .content {
     padding-bottom: 300px;
     .one {
@@ -107,7 +109,7 @@
     }
     .one-text {
       @include position(absolute, 105%, auto, auto, 22%);
-      width: 190%;
+      width: 220%;
       .one-blockquote {
         font-size: 1.1rem;
       }

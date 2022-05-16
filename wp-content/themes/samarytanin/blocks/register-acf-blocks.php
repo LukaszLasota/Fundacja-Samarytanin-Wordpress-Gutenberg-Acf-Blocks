@@ -58,6 +58,18 @@ function my_acf_init() {
 			'supports'          => array( 'anchor' => true )
 		));
 
+		acf_register_block(array(
+			'name'				=> 'header subpage',
+			'title'				=> __('Header subpage'),
+			'description'		=> __('Header na podstrony'),
+			'render_template'   => get_template_directory() . '/blocks/template/sm-header-subpage-block.php',
+			'category'          => 'layout',
+			'icon'              => 'tagcloud',
+			'align_content' => true,
+			'align_content' => 'matrix',
+			'keywords'          => array( 'frontpage', 'contact', 'subpage' ),
+			'supports'          => array( 'anchor' => true )
+		));
 
 
 	}
