@@ -1,0 +1,166 @@
+.about-page {
+  position: relative;
+  &-image {
+    width: 62%;
+  }
+  &-person {
+    @include position(absolute, 7%, auto, auto, 24%);
+    display: flex;
+    width: 35%;
+  }
+  .person-box {
+    position: relative;
+    width: 45%;
+    margin: 15px;
+    figure {
+      margin: 0;
+      width: 100%;
+    }
+  }
+  .person-image {
+    width: 100%;
+  }
+  .person-image-name {
+    @include position(absolute, auto, auto, 9%, auto);
+    z-index: 10;
+    width: 100%;
+    height: 20%;
+    background-color: $button-color;
+    color: $body-color;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    @include flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .person-image-function {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: $button-color;
+  }
+  .about-page-text {
+    width: 80%;
+    margin: 0 auto;
+    padding: 200px 0 300px;
+    p {
+      font-size: 1.5rem;
+      font-weight: $font-weight-paragraph;
+      letter-spacing: 1px;
+      margin: 6px;
+      text-align: center;
+    }
+    .about-page-text-space {
+      padding: 15px;
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1600px) {
+  .about-page {
+    &-image {
+      width: 65%;
+    }
+    .person-image-name {
+      @include position(absolute, auto, auto, 12%, auto);
+      font-size: 1.7rem;
+    }
+    .person-image-function {
+      font-size: 1.5rem;
+    }
+    .about-page-text {
+      width: 80%;
+      padding: 200px 0 250px;
+      p {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1025px) {
+  .about-page {
+    &-image {
+      width: 70%;
+    }
+    &-person {
+      @include position(absolute, 7%, auto, auto, 20%);
+      width: 45%;
+    }
+    .person-box {
+      width: 45%;
+    }
+    .person-image-name {
+      @include position(absolute, auto, auto, 13%, auto);
+      font-size: 1.7rem;
+    }
+    .person-image-function {
+      font-size: 1.5rem;
+    }
+    .about-page-text {
+      width: 80%;
+      padding: 200px 0 250px;
+      p {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    &-image {
+      width: 80%;
+    }
+    &-person {
+      @include position(absolute, 2%, auto, auto, 17%);
+      width: 60%;
+    }
+    .person-box {
+      width: 45%;
+    }
+    .person-image-name {
+      @include position(absolute, auto, auto, 13%, auto);
+      font-size: 1.6rem;
+    }
+    .person-image-function {
+      font-size: 1.4rem;
+    }
+    .about-page-text {
+      width: 90%;
+      padding: 220px 0 200px;
+      p {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .about-page {
+    &-image {
+      width: 100%;
+    }
+    &-person {
+      @include position(absolute, 1%, auto, auto, 5%);
+      width: 90%;
+    }
+    .person-box {
+      width: 50%;
+    }
+    .person-image-name {
+      @include position(absolute, auto, auto, 15%, auto);
+      font-size: 1.2rem;
+    }
+    .person-image-function {
+      font-size: 1.1rem;
+    }
+    .about-page-text {
+      width: 80%;
+      padding: 200px 0 150px;
+      p {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
