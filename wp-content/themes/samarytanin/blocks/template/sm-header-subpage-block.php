@@ -58,7 +58,7 @@ $text_color = get_field('text_color');
 <section class="content-mobile-subpage">
         <div class="one">
             <div class="one-text">
-                <h2 class="one-h2" style='color: <?php echo $text_color; ?>'><?php echo get_the_title(); ?></h2>
+                <h2 class="one-h2" ><?php echo get_the_title(); ?></h2>
             </div>
         </div>
         <div class="two">
@@ -69,8 +69,8 @@ $text_color = get_field('text_color');
             >
             <img 
             class="image-main" 
-            src="<?php echo esc_url($img_main["url"]); ?>" 
-            alt="<?php echo esc_html_e($img_main["alt"]); ?>"
+            src="<?php echo esc_url($img_main_phone["url"]); ?>" 
+            alt="<?php echo esc_html_e($img_main_phone["alt"]); ?>"
             loading="lazy"
             >
         </div>

@@ -13,8 +13,8 @@ function my_acf_init() {
 			'render_template'   => get_template_directory() . '/blocks/template/sm-marcy-block.php',
 			'category'          => 'layout',
 			'icon'              => 'tagcloud',
-			'align_content' => true,
-			'align_content' => 'matrix',
+			'align_content' 	=> true,
+			'align_content' 	=> 'matrix',
 			'keywords'          => array( 'frontpage', 'marcy', 'heading' ),
 			'supports'          => array( 'anchor' => true )
 		));
@@ -26,8 +26,8 @@ function my_acf_init() {
 			'render_template'   => get_template_directory() . '/blocks/template/sm-about-block.php',
 			'category'          => 'layout',
 			'icon'              => 'tagcloud',
-			'align_content' => true,
-			'align_content' => 'matrix',
+			'align_content' 	=> true,
+			'align_content' 	=> 'matrix',
 			'keywords'          => array( 'frontpage', 'about', 'main' ),
 			'supports'          => array( 'anchor' => true )
 		));
@@ -39,8 +39,8 @@ function my_acf_init() {
 			'render_template'   => get_template_directory() . '/blocks/template/sm-services-block.php',
 			'category'          => 'layout',
 			'icon'              => 'tagcloud',
-			'align_content' => true,
-			'align_content' => 'matrix',
+			'align_content' 	=> true,
+			'align_content' 	=> 'matrix',
 			'keywords'          => array( 'frontpage', 'services', 'main' ),
 			'supports'          => array( 'anchor' => true )
 		));
@@ -52,8 +52,8 @@ function my_acf_init() {
 			'render_template'   => get_template_directory() . '/blocks/template/sm-contact-block.php',
 			'category'          => 'layout',
 			'icon'              => 'tagcloud',
-			'align_content' => true,
-			'align_content' => 'matrix',
+			'align_content'	 	=> true,
+			'align_content' 	=> 'matrix',
 			'keywords'          => array( 'frontpage', 'contact', 'main' ),
 			'supports'          => array( 'anchor' => true )
 		));
@@ -65,8 +65,21 @@ function my_acf_init() {
 			'render_template'   => get_template_directory() . '/blocks/template/sm-header-subpage-block.php',
 			'category'          => 'layout',
 			'icon'              => 'tagcloud',
-			'align_content' => true,
-			'align_content' => 'matrix',
+			'align_content' 	=> true,
+			'align_content' 	=> 'matrix',
+			'keywords'          => array( 'frontpage', 'contact', 'subpage' ),
+			'supports'          => array( 'anchor' => true )
+		));
+
+		acf_register_block(array(
+			'name'				=> 'contact element',
+			'title'				=> __('Contact element'),
+			'description'		=> __('Blok sekcji kontakt'),
+			'render_template'   => get_template_directory() . '/blocks/template/sm-contact-element-block.php',
+			'category'          => 'layout',
+			'icon'              => 'tagcloud',
+			'align_content' 	=> true,
+			'align_content' 	=> 'matrix',
 			'keywords'          => array( 'frontpage', 'contact', 'subpage' ),
 			'supports'          => array( 'anchor' => true )
 		));

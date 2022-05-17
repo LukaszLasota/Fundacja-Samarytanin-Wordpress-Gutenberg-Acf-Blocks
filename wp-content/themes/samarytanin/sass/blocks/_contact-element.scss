@@ -1,0 +1,104 @@
+.contact-page {
+  background-color: $contact-color;
+  // @include flex;
+  // @include center;
+  padding: 60px 0 60px;
+  &-one {
+    // width: 25%;
+    position: relative;
+  }
+  &-text {
+    @include flex;
+    @include center;
+    width: 100%;
+    padding: 10px 15px 10px 0;
+    .contact-image-small {
+      width: 15%;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  .contact-paragraph {
+    width: 85%;
+    @include flex;
+    @include center;
+    overflow-wrap: break-word;
+    p {
+      width: 100%;
+      font-size: 1.2rem;
+      font-weight: $font-weight-paragraph;
+      margin: 5px 10px;
+    }
+  }
+  &-h3 {
+    @include position(absolute, auto, auto, auto, 10%);
+    padding: 20px 65px;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    background-color: $button-color;
+    font-size: 1.9rem;
+    letter-spacing: 2px;
+    text-align: center;
+    color: $light;
+    margin-top: -130px;
+  }
+}
+.padding-contact {
+  width: 100%;
+  padding: 150px 0;
+}
+
+@media (max-width: 1025px) {
+  .contact-page {
+    &-text {
+      padding: 10px 0px;
+    }
+    .contact-paragraph {
+      width: 84%;
+      p {
+        font-size: 1.1rem;
+        margin: 5px;
+      }
+    }
+    &-h3 {
+      @include position(absolute, 0%, auto, auto, 10%);
+      padding: 20px 30px;
+      font-size: 1.4rem;
+    }
+  }
+  .padding-contact {
+    padding: 100px 0;
+  }
+}
+
+@media (max-width: 770px) {
+  .contact-page {
+    &-h3 {
+      @include position(absolute, 0%, auto, auto, 10%);
+      transform: translateY(-150%);
+      font-size: 1.2rem;
+      margin-top: 0px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-page {
+    &-h3 {
+      @include position(relative, auto, auto, auto, auto);
+      display: block;
+      transform: translateY(0%);
+      padding: 20px 65px;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      background-color: $button-color;
+      font-size: 1.9rem;
+      letter-spacing: 2px;
+      text-align: center;
+      color: $light;
+      margin-top: 0px;
+    }
+  }
+}
