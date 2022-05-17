@@ -1,0 +1,108 @@
+// Service page text content
+
+.service-page-head {
+  // padding: 100px 0;
+  // background-color: $contact-color;
+  // text-align: center;
+  p {
+    // width: 70%;
+    margin: 15px auto;
+    font-size: $font-size-paragraph;
+    font-weight: $font-weight-paragraph;
+    letter-spacing: $letter-spacing-paragraph;
+  }
+}
+.service-page-text {
+  width: 80%;
+  margin: 0 auto;
+  // padding: 20px 0 300px;
+  h3 {
+    font-size: 1.8rem;
+    font-weight: normal;
+    font-weight: $font-weight-paragraph;
+    letter-spacing: $letter-spacing-paragraph;
+  }
+  p,
+  li {
+    font-size: 1.4rem;
+    font-weight: $font-weight-paragraph;
+    letter-spacing: 1px;
+    margin: 3px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .service-page-head {
+    // padding: 90px 0;
+    p {
+      width: 80%;
+      margin: 15px auto;
+      font-size: $font-size-paragraph;
+    }
+  }
+  .service-page-text {
+    width: 85%;
+    padding: 70px 0 250px;
+    h3 {
+      font-size: 1.7rem;
+    }
+    p,
+    li {
+      font-size: 1.4rem;
+      margin: 7px 3px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  // Service page mobile
+
+  .service-page-head {
+    // padding: 70px 0;
+    p {
+      width: 85%;
+      font-size: 1.4rem;
+    }
+  }
+  .service-page-text {
+    width: 85%;
+    // padding: 80px 0 200px;
+    h3 {
+      font-size: 1.4rem;
+      letter-spacing: $letter-spacing-paragraph;
+    }
+    p,
+    li {
+      font-size: 1.2rem;
+      margin: 4px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  // Service page text content
+
+  .service-page-head {
+    // padding: 70px 0;
+    p {
+      width: 90%;
+      font-size: 1.2rem;
+    }
+  }
+  .service-page-text {
+    width: 90%;
+    // padding: 70px 0 170px;
+    ul {
+      padding-left: 10px;
+    }
+    h3 {
+      font-size: 1.2rem;
+      letter-spacing: $letter-spacing-paragraph;
+    }
+    p,
+    li {
+      font-size: 1rem;
+      margin: 10px 5px;
+    }
+  }
+}
