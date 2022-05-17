@@ -83,6 +83,18 @@ function my_acf_init() {
 			'keywords'          => array( 'frontpage', 'contact', 'subpage' ),
 			'supports'          => array( 'anchor' => true )
 		));
+		acf_register_block(array(
+			'name'				=> 'about person block',
+			'title'				=> __('About person block'),
+			'description'		=> __('Blok osoby na stronie o nas'),
+			'render_template'   => get_template_directory() . '/blocks/template/sm-about-person-block.php',
+			'category'          => 'layout',
+			'icon'              => 'tagcloud',
+			'align_content' 	=> true,
+			'align_content' 	=> 'matrix',
+			'keywords'          => array( 'frontpage', 'about', 'subpage' ),
+			'supports'          => array( 'anchor' => true )
+		));
 
 
 	}
