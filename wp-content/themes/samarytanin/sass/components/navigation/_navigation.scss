@@ -162,7 +162,7 @@
   .hamburger-inner::after {
     @include hamburger-line;
 
-    content: "";
+    content: '';
     left: 0;
     transition: transform 0.2s 0.2s ease-in-out;
   }
@@ -236,7 +236,7 @@
     padding: 20px;
   }
   .navigation {
-    top: 90px;
+    top: 70px;
   }
 
   .navigation-item {

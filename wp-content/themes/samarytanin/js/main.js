@@ -32,11 +32,9 @@ function removeClassOnScroll() {
 function updateMenuBackground() {
   scrollpos = window.scrollY;
   if (scrollpos > 10 || actualWidth < 770) {
-    console.log(44);
     addClassOnScroll();
   } else if (scrollpos < 10) {
     removeClassOnScroll();
-    console.log(45);
   }
 }
 window.addEventListener('scroll', updateMenuBackground);
