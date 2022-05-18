@@ -30,6 +30,13 @@ function samarytanin_customize_register( $wp_customize ) {
 				'render_callback' => 'samarytanin_customize_partial_blogdescription',
 			)
 		);
+		$wp_customize->selective_refresh->add_partial(
+			'blogdescription',
+			array(
+				'selector'        => '.site-description',
+				'render_callback' => 'samarytanin_customize_partial_blogdescription',
+			)
+		);
 	}
 }
 add_action( 'customize_register', 'samarytanin_customize_register' );

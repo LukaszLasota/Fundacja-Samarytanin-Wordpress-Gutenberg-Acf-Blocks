@@ -5,7 +5,6 @@ function my_acf_init() {
 	// check function exists
 	if( function_exists('acf_register_block') ) {
 		
-		// register a marcy block
 		acf_register_block(array(
 			'name'				=> 'marcy',
 			'title'				=> __('Marcy'),

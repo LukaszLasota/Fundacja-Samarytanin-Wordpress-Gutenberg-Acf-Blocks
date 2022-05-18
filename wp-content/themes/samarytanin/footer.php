@@ -36,9 +36,14 @@
 					?>  
                 </div>
             </div>
+			<div class="scrollup">
+				<a href="#masthead">
+					<img 
+					src="<?php echo esc_url( get_theme_mod( 'icon_setting_one' ) ); ?>" 
+					alt="<?php echo esc_html_e( get_theme_mod( 'icon_text_setting_two' ) ); ?>">
+				</a>
+			</div>
         </div>
-
-
 <?php wp_footer(); ?>
 
 </body>

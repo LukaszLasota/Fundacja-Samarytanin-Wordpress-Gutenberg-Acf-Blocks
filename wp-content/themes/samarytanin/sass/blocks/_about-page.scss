@@ -7,6 +7,7 @@
     @include position(absolute, 7%, auto, auto, 24%);
     display: flex;
     justify-content: center;
+    align-content: center;
     width: 35%;
   }
   .person-box {
@@ -147,7 +148,7 @@
       width: 90%;
     }
     .person-box {
-      width: 50%;
+      width: 45%;
     }
     .person-image-name {
       @include position(absolute, auto, auto, 15%, auto);
@@ -160,7 +161,7 @@
       width: 80%;
       padding: 200px 0 150px;
       p {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
       }
     }
   }

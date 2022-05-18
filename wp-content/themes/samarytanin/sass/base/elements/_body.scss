@@ -1,8 +1,12 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: $body-color;
   font-size: 10px;
   box-sizing: border-box;
-  font-family: "Didot";
+  font-family: 'Didot';
   overflow-x: hidden;
 }
 img {

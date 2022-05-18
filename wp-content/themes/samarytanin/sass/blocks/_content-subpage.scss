@@ -11,8 +11,8 @@
     background: $body-color;
   }
   &-absolute {
-    @include position(absolute, 28%, auto, auto, auto);
-    width: 172%;
+    @include position(absolute, 26%, auto, auto, auto);
+    width: 174%;
     z-index: 10;
   }
   &-padding {
