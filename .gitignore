@@ -56,7 +56,6 @@ nginx.conf
 # WordPress
 wp-config.php
 wp-content/upgrade/
-wp-content/uploads/
 wp-content/plugins/advanced-custom-fields-pro
 
 # Dependency files (node/bower/sass etc.)
