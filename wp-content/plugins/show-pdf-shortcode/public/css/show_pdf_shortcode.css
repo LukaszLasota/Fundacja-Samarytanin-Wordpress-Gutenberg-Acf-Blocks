@@ -1,0 +1,80 @@
+.statut-page-head {
+  padding: 100px 0 200px;
+  background-color: #ddc6b4;
+  background-image: linear-gradient(to bottom, #fffdf8 0%, #ddc6b4 0%, #ddc6b4 30%, #fffdf8 30%);
+}
+
+.center-pdf {
+  margin: 0 auto;
+  width: 40%;
+  position: relative;
+}
+.center-pdf span {
+  font-size: 1.6rem;
+}
+.center-pdf .more {
+  font-weight: bold;
+  padding: 20px 40px;
+}
+
+#the-canvas {
+  border: 1px solid black;
+  direction: ltr;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 70px;
+}
+
+#prev,
+#next {
+  width: 50px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+#prev img,
+#next img {
+  width: 100%;
+}
+
+#prev {
+  position: absolute;
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  transform: translate(-50%, -50%);
+}
+
+#next {
+  position: absolute;
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  left: 100%;
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+@media (max-width: 1600px) {
+  .center-pdf {
+    width: 60%;
+  }
+}
+@media (max-width: 1025px) {
+  .center-pdf {
+    width: 80%;
+  }
+}
+@media (max-width: 600px) {
+  .center-pdf {
+    width: 90%;
+  }
+  .center-pdf span {
+    font-size: 1.6rem;
+  }
+
+  #prev,
+#next {
+    width: 30px;
+  }
+}
