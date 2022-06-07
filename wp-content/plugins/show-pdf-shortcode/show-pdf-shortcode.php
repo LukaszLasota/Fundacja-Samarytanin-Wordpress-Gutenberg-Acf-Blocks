@@ -41,22 +41,24 @@ define( 'PLUGIN_NAME_VERSION', '1.0.0' );
  * The code that runs during plugin activation.
  * This action is documented in includes/class-show-pdf-shortcode-activator.php
  */
-function activate_plugin_name() {
+function activate_Show_Pdf_Shortcode() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-show-pdf-shortcode-activator.php';
-	Show_Pdf_Shortcode_Activator::activate();
+	$ativator = new Show_Pdf_Shortcode_Activator();
+	$ativator->activate();
+	// Show_Pdf_Shortcode_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-show-pdf-shortcode-deactivator.php
  */
-function deactivate_plugin_name() {
+function deactivate_Show_Pdf_Shortcode() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-show-pdf-shortcode-deactivator.php';
 	Show_Pdf_Shortcode_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_plugin_name' );
-register_deactivation_hook( __FILE__, 'deactivate_plugin_name' );
+register_activation_hook( __FILE__, 'activate_Show_Pdf_Shortcode' );
+register_deactivation_hook( __FILE__, 'deactivate_Show_Pdf_Shortcode' );
 
 /**
  * The core plugin class that is used to define internationalization,
@@ -73,10 +75,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-show-pdf-shortcode.php';
  *
  * @since    1.0.0
  */
-function run_plugin_name() {
+function Run_Show_Pdf_Shortcode() {
 
 	$plugin = new Show_Pdf_Shortcode();
 	$plugin->run();
 
 }
-run_plugin_name();
+Run_Show_Pdf_Shortcode();

@@ -99,5 +99,27 @@ class Show_Pdf_Shortcode_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/show-pdf-shortcode-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
+	//Creta manu methods
+	public function pdf_list_menu(){
+		add_menu_page('Pdf Managment Tool', 'Pdf Managment Tool', 'manage_options', 'pdf-managment-tool', array($this, 'pdf_managment_plugin'), 'dashicons-pdf', 22 );
+
+		// Create plugin submenu
+		add_submenu_page('pdf-managment-tool', 'Dashboard', 'Dashboard', 'manage_options', 'pdf_managment_dashboard', array($this, 'pdf_managment_plugin') );
+
+	}
+	
+	// Menu callback function
+	public function pdf_managment_dashboard(){
+		echo "<h3>Witaj w pod menu pluginu</h3>";
+	}
+
+	public function pdf_managment_plugin(){
+		
+		echo "<h3>Witaj w menu pluginu</h3>";
+		global $wpdb;
+		// $user_email = $wpdb->get_var('SELECT user_email from fs_users');
+		// echo $user_email;  
+		
+	}
 
 }

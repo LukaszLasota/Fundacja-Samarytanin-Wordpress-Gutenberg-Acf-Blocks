@@ -31,6 +31,11 @@ class Show_Pdf_Shortcode_Activator {
 	 */
 	public static function activate() {
 
+		$table_query = '';
+
+		// Dynamin table generating code
+		require_once ABSPATH . 'wp-admin/includes/upgrade.php'; 
+		dbDelta($table_query);
 	}
 
 }
