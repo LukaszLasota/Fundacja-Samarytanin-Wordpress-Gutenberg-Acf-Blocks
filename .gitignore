@@ -34,6 +34,7 @@ Thumbs.db
 # Environment files
 .env
 web.config
+local-xdebuginfo.php
 
 # Log files
 *.log
@@ -57,7 +58,7 @@ nginx.conf
 wp-config.php
 wp-content/upgrade/
 wp-content/plugins/advanced-custom-fields-pro
-
+wp-content/uploads/
 # Dependency files (node/bower/sass etc.)
 .sass-cache/
 node_modules/
@@ -97,5 +98,6 @@ wp-content/languages/wpml/
 /vendor
 /wp-content/themes/*/application/vendor
 .php*
+license.txt
 
 
