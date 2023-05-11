@@ -58,7 +58,8 @@ nginx.conf
 wp-config.php
 wp-content/upgrade/
 wp-content/plugins/advanced-custom-fields-pro
-wp-content/uploads/
+wp-content/uploads
+wp-content/uploads-webpc
 # Dependency files (node/bower/sass etc.)
 .sass-cache/
 node_modules/

@@ -24,6 +24,7 @@ class ImportActions {
 		add_action( 'kadence-starter-templates/after_content_import_execution', array( $this, 'forms_import' ), 20, 5 );
 		add_action( 'kadence-starter-templates/after_content_import_execution', array( $this, 'donations_import' ), 20, 5 );
 		add_action( 'kadence-starter-templates/after_content_import_execution', array( $this, 'give_forms_import' ), 20, 5 );
+		add_action( 'kadence-starter-templates/after_content_import_execution', array( $this, 'depicter_import' ), 20, 5 );
 
 		// Customizer import.
 		add_action( 'kadence-starter-templates/customizer_import_execution', array( $this, 'customizer_import' ), 10, 1 );
@@ -103,6 +104,18 @@ class ImportActions {
 	public function give_forms_import( $selected_import_files, $import_files, $selected_index, $selected_palette, $selected_font ) {
 		if ( ! empty( $selected_import_files['give-forms'] ) && class_exists( 'Kadence_Starter_Templates\Kadence_Starter_Templates_Give_Import' ) ) {
 			Kadence_Starter_Templates_Give_Import::import_forms( $selected_import_files['give-forms'] );
+		}
+	}
+	/**
+	 * Execute the Depictor imports.
+	 *
+	 * @param array $selected_import_files Actual selected import files (content, widgets, customizer, redux).
+	 * @param array $import_files          The filtered import files defined in `kadence-starter-templates/import_files` filter.
+	 * @param int   $selected_index        Selected index of import.
+	 */
+	public function depicter_import( $selected_import_files, $import_files, $selected_index, $selected_palette, $selected_font ) {
+		if ( ! empty( $selected_import_files['depicter'] ) && class_exists( 'Kadence_Starter_Templates\Kadence_Starter_Templates_Depicter_Import' ) ) {
+			Kadence_Starter_Templates_Depicter_Import::import_slider( $selected_import_files['depicter'] );
 		}
 	}
 	/**

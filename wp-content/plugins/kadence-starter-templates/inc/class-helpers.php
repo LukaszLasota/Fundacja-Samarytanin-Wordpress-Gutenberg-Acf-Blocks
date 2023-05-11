@@ -65,7 +65,7 @@ class Helpers {
 
 		// ----- Set content file path -----
 		// Set the filename string for content import file.
-		$content_filename = apply_filters( 'kaence-starter-templates/downloaded_content_file_prefix', 'demo-content-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kaence-starter-templates/downloaded_content_file_suffix_and_file_extension', '.xml' );
+		$content_filename = apply_filters( 'kadence-starter-templates/downloaded_content_file_prefix', 'demo-content-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kadence-starter-templates/downloaded_content_file_suffix_and_file_extension', '.xml' );
 
 		// Download the content import file.
 		$downloaded_files['content'] = $downloader->download_file( $import_file_info['pages'][ $page_id ]['content'], $content_filename );
@@ -78,7 +78,7 @@ class Helpers {
 		// Get customizer import file as well. If defined!
 		if ( ! empty( $import_file_info['theme_options'] ) ) {
 			// Setup filename path to save the customizer content.
-			$customizer_filename = apply_filters( 'kaence-starter-templates/downloaded_customizer_file_prefix', 'demo-customizer-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kaence-starter-templates/downloaded_customizer_file_suffix_and_file_extension', '.dat' );
+			$customizer_filename = apply_filters( 'kadence-starter-templates/downloaded_customizer_file_prefix', 'demo-customizer-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kadence-starter-templates/downloaded_customizer_file_suffix_and_file_extension', '.dat' );
 
 			// Download the customizer import file.
 			$downloaded_files['customizer'] = $downloader->download_file( $import_file_info['theme_options'], $customizer_filename );
@@ -107,16 +107,15 @@ class Helpers {
 			'forms'      => '',
 		);
 		$downloader = new Downloader();
-
 		// ----- Set content file path -----
 		// Check if 'content' is not defined. That would mean a local file.
 		if ( empty( $import_file_info['content'] ) ) {
-			if ( file_exists( $import_file_info['local_content'] ) ) {
+			if ( isset( $import_file_info['local_content'] ) && file_exists( $import_file_info['local_content'] ) ) {
 				$downloaded_files['content'] = $import_file_info['local_content'];
 			}
 		} else {
 			// Set the filename string for content import file.
-			$content_filename = apply_filters( 'kaence-starter-templates/downloaded_content_file_prefix', 'demo-content-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kaence-starter-templates/downloaded_content_file_suffix_and_file_extension', '.xml' );
+			$content_filename = apply_filters( 'kadence-starter-templates/downloaded_content_file_prefix', 'demo-content-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kadence-starter-templates/downloaded_content_file_suffix_and_file_extension', '.xml' );
 
 			// Download the content import file.
 			$downloaded_files['content'] = $downloader->download_file( $import_file_info['content'], $content_filename );
@@ -131,7 +130,7 @@ class Helpers {
 		// Get widgets file as well. If defined!
 		if ( ! empty( $import_file_info['widget_data'] ) ) {
 			// Set the filename string for widgets import file.
-			$widget_filename = apply_filters( 'kaence-starter-templates/downloaded_widgets_file_prefix', 'demo-widgets-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kaence-starter-templates/downloaded_widgets_file_suffix_and_file_extension', '.json' );
+			$widget_filename = apply_filters( 'kadence-starter-templates/downloaded_widgets_file_prefix', 'demo-widgets-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kadence-starter-templates/downloaded_widgets_file_suffix_and_file_extension', '.json' );
 
 			// Download the widgets import file.
 			$downloaded_files['widgets'] = $downloader->download_file( $import_file_info['widget_data'], $widget_filename );
@@ -150,7 +149,7 @@ class Helpers {
 		// Get customizer import file as well. If defined!
 		if ( ! empty( $import_file_info['theme_options'] ) ) {
 			// Setup filename path to save the customizer content.
-			$customizer_filename = apply_filters( 'kaence-starter-templates/downloaded_customizer_file_prefix', 'demo-customizer-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kaence-starter-templates/downloaded_customizer_file_suffix_and_file_extension', '.dat' );
+			$customizer_filename = apply_filters( 'kadence-starter-templates/downloaded_customizer_file_prefix', 'demo-customizer-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kadence-starter-templates/downloaded_customizer_file_suffix_and_file_extension', '.dat' );
 
 			// Download the customizer import file.
 			$downloaded_files['customizer'] = $downloader->download_file( $import_file_info['theme_options'], $customizer_filename );
@@ -168,7 +167,7 @@ class Helpers {
 		// Get form file as well. If defined!
 		if ( ! empty( $import_file_info['form_data'] ) ) {
 			// Set the filename string for form import file.
-			$form_filename = apply_filters( 'kaence-starter-templates/downloaded_forms_file_prefix', 'demo-forms-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kaence-starter-templates/downloaded_form_file_suffix_and_file_extension', '.json' );
+			$form_filename = apply_filters( 'kadence-starter-templates/downloaded_forms_file_prefix', 'demo-forms-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kadence-starter-templates/downloaded_form_file_suffix_and_file_extension', '.json' );
 
 			// Download the form import file.
 			$downloaded_files['forms'] = $downloader->download_file( $import_file_info['form_data'], $form_filename );
@@ -186,7 +185,7 @@ class Helpers {
 		// Get form file as well. If defined!
 		if ( ! empty( $import_file_info['give_donation_data'] ) ) {
 			// Set the filename string for form import file.
-			$give_filename = apply_filters( 'kaence-starter-templates/downloaded_forms_file_prefix', 'demo-give-donations-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kaence-starter-templates/downloaded_give_donations_file_suffix_and_file_extension', '.json' );
+			$give_filename = apply_filters( 'kadence-starter-templates/downloaded_forms_file_prefix', 'demo-give-donations-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kadence-starter-templates/downloaded_give_donations_file_suffix_and_file_extension', '.json' );
 
 			// Download the form import file.
 			$downloaded_files['give-donations'] = $downloader->download_file( $import_file_info['give_donation_data'], $give_filename );
@@ -200,7 +199,7 @@ class Helpers {
 		// Get form file as well. If defined!
 		if ( ! empty( $import_file_info['give_form_data'] ) ) {
 			// Set the filename string for form import file.
-			$give_form_filename = apply_filters( 'kaence-starter-templates/downloaded_forms_file_prefix', 'demo-give-forms-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kaence-starter-templates/downloaded_give_form_file_suffix_and_file_extension', '.json' );
+			$give_form_filename = apply_filters( 'kadence-starter-templates/downloaded_forms_file_prefix', 'demo-give-forms-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kadence-starter-templates/downloaded_give_form_file_suffix_and_file_extension', '.json' );
 
 			// Download the form import file.
 			$downloaded_files['give-forms'] = $downloader->download_file( $import_file_info['give_form_data'], $give_form_filename );
@@ -208,6 +207,19 @@ class Helpers {
 			// Return from this function if there was an error.
 			if ( is_wp_error( $downloaded_files['give-forms'] ) ) {
 				return $downloaded_files['give-forms'];
+			}
+		}
+		// Get the slider
+		if ( ! empty( $import_file_info['depicter_data'] ) ) {
+			// Set the filename string for form import file.
+			$depicter_filename = apply_filters( 'kadence-starter-templates/downloaded_depicter_file_prefix', 'demo-depicter-import-file_' ) . self::$demo_import_start_time . apply_filters( 'kadence-starter-templates/downloaded_depicter_file_suffix_and_file_extension', '.zip' );
+
+			// Download the form import file.
+			$downloaded_files['depicter'] = $downloader->download_file( $import_file_info['depicter_data'], $depicter_filename );
+
+			// Return from this function if there was an error.
+			if ( is_wp_error( $downloaded_files['depicter'] ) ) {
+				return $downloaded_files['depicter'];
 			}
 		}
 
@@ -346,7 +358,7 @@ class Helpers {
 		}
 
 		// Get plugin page settings.
-		$plugin_page_setup = apply_filters( 'kaence-starter-templates/plugin_page_setup', array(
+		$plugin_page_setup = apply_filters( 'kadence-starter-templates/plugin_page_setup', array(
 				'parent_slug' => 'themes.php',
 				'page_title'  => esc_html__( 'One Click Demo Import' , 'kadence-starter-templates' ),
 				'menu_title'  => esc_html__( 'Import Demo Data' , 'kadence-starter-templates' ),
@@ -384,9 +396,9 @@ class Helpers {
 	 */
 	public static function get_log_path() {
 		$upload_dir  = wp_upload_dir();
-		$upload_path = apply_filters( 'kaence-starter-templates/upload_file_path', trailingslashit( $upload_dir['path'] ) );
+		$upload_path = apply_filters( 'kadence-starter-templates/upload_file_path', trailingslashit( $upload_dir['path'] ) );
 
-		$log_path = $upload_path . apply_filters( 'kaence-starter-templates/log_file_prefix', 'log_file_' ) . self::$demo_import_start_time . apply_filters( 'kaence-starter-templates/log_file_suffix_and_file_extension', '.txt' );
+		$log_path = $upload_path . apply_filters( 'kadence-starter-templates/log_file_prefix', 'log_file_' ) . self::$demo_import_start_time . apply_filters( 'kadence-starter-templates/log_file_suffix_and_file_extension', '.txt' );
 
 		self::register_file_as_media_attachment( $log_path );
 
@@ -403,13 +415,13 @@ class Helpers {
 	public static function register_file_as_media_attachment( $log_path ) {
 		// Check the type of file.
 		$log_mimes = array( 'txt' => 'text/plain' );
-		$filetype  = wp_check_filetype( basename( $log_path ), apply_filters( 'kaence-starter-templates/file_mimes', $log_mimes ) );
+		$filetype  = wp_check_filetype( basename( $log_path ), apply_filters( 'kadence-starter-templates/file_mimes', $log_mimes ) );
 
 		// Prepare an array of post data for the attachment.
 		$attachment = array(
 			'guid'           => self::get_log_url( $log_path ),
 			'post_mime_type' => $filetype['type'],
-			'post_title'     => apply_filters( 'kaence-starter-templates/attachment_prefix', esc_html__( 'One Click Demo Import - ', 'kadence-starter-templates' ) ) . preg_replace( '/\.[^.]+$/', '', basename( $log_path ) ),
+			'post_title'     => apply_filters( 'kadence-starter-templates/attachment_prefix', esc_html__( 'One Click Demo Import - ', 'kadence-starter-templates' ) ) . preg_replace( '/\.[^.]+$/', '', basename( $log_path ) ),
 			'post_content'   => '',
 			'post_status'    => 'inherit',
 		);
@@ -427,7 +439,7 @@ class Helpers {
 	 */
 	public static function get_log_url( $log_path ) {
 		$upload_dir = wp_upload_dir();
-		$upload_url = apply_filters( 'kaence-starter-templates/upload_file_url', trailingslashit( $upload_dir['url'] ) );
+		$upload_url = apply_filters( 'kadence-starter-templates/upload_file_url', trailingslashit( $upload_dir['url'] ) );
 
 		return $upload_url . basename( $log_path );
 	}
@@ -645,7 +657,7 @@ class Helpers {
 	 * Set the $demo_import_start_time class variable with the current date and time string.
 	 */
 	public static function set_demo_import_start_time() {
-		self::$demo_import_start_time = date( apply_filters( 'kaence-starter-templates/date_format_for_file_names', 'Y-m-d__H-i-s' ) );
+		self::$demo_import_start_time = date( apply_filters( 'kadence-starter-templates/date_format_for_file_names', 'Y-m-d__H-i-s' ) );
 	}
 
 

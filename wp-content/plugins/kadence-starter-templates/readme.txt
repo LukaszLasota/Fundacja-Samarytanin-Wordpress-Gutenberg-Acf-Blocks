@@ -1,9 +1,9 @@
 === Starter Templates by Kadence WP ===
 Contributors: britner
 Tags: templates, gutenberg
-Requires at least: 5.0
-Tested up to: 5.9
-Stable tag: 1.2.13
+Requires at least: 5.6
+Tested up to: 6.2
+Stable tag: 1.2.20
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -107,6 +107,34 @@ Absolutely not.
 
 
 == Changelog ==
+
+= 1.2.20 =
+* Add: Search to grid view.
+* Fix: Issue with in block css not importing correctly.
+
+= 1.2.19 =
+* Add: support for importing's with Seriously Simple Podcasting.
+* Fix: Issue where gradients were not importing correctly. 
+
+= 1.2.18 =
+* Fix: Unescaped variable. 
+
+= 1.2.17 =
+* Fix: Possible admin+ PHP objection injection in settings importer.
+
+= 1.2.16 =
+* Fix: Issue with woocommerce page styles.
+
+= 1.2.15 =
+* Fix: Issue with single page imports.
+* Fix: Issue with importing without content.
+* Fix: Issue with some woocommerce pages having duplicates.
+
+= 1.2.14 =
+* Add: Filtering options.
+* Fix: Issue with internal links breaking images on import.
+* Fix: Modal title style issue.
+* Fix: Preview iframe issue.
 
 = 1.2.13 =
 * Update: Support for some third party plugins.

@@ -285,7 +285,7 @@ class Customizer_Import_Export {
 		$data = '';
 		if ( $wp_filesystem->exists( $file['file'] ) ) {
 			$raw  = $wp_filesystem->get_contents( $file['file'] );
-			$data = @unserialize( $raw );
+			$data = @unserialize( $raw, array( 'allowed_classes' => false ) );
 		}
 
 		// Remove the uploaded file.
@@ -451,9 +451,9 @@ class Customizer_Import_Export {
 	 */
 	public static function controls_print_scripts() {
 		global $kadence_starter_import_error;
-		
+
 		if ( $kadence_starter_import_error ) {
-			echo '<script> alert("' . $kadence_starter_import_error . '"); </script>';
+			echo '<script>alert("' . esc_js( $kadence_starter_import_error ) . '");</script>';
 		}
 	}
 }

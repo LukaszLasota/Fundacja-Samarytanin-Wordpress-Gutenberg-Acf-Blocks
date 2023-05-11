@@ -106,6 +106,13 @@ class Starter_Templates {
 	private $override_fonts;
 
 	/**
+	 * Import Shop/Cart/Checkout Pages.
+	 *
+	 * @var boolean
+	 */
+	private $ss = false;
+
+	/**
 	 * The paths of the actual import files to be used in the import.
 	 *
 	 * @var array
@@ -189,7 +196,7 @@ class Starter_Templates {
 			define( 'KADENCE_STARTER_TEMPLATES_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 		}
 		if ( ! defined( 'KADENCE_STARTER_TEMPLATES_VERSION' ) ) {
-			define( 'KADENCE_STARTER_TEMPLATES_VERSION', '1.2.13' );
+			define( 'KADENCE_STARTER_TEMPLATES_VERSION', '1.2.20' );
 		}
 	}
 
@@ -718,6 +725,21 @@ class Starter_Templates {
 				'state' => Plugin_Check::active_check( 'restrict-content/restrictcontent.php' ),
 				'src'   => 'repo',
 			),
+			'kadence-woo-extras' => array(
+				'title' => 'Kadence Shop Kit',
+				'state' => Plugin_Check::active_check( 'kadence-woo-extras/kadence-woo-extras.php' ),
+				'src'   => 'bundle',
+			),
+			'depicter' => array(
+				'title' => 'Depicter Slider',
+				'state' => Plugin_Check::active_check( 'depicter/depicter.php' ),
+				'src'   => 'repo',
+			),
+			'seriously-simple-podcasting' => array(
+				'title' => 'Seriously Simple Podcasting',
+				'state' => Plugin_Check::active_check( 'seriously-simple-podcasting/seriously-simple-podcasting.php' ),
+				'src'   => 'repo',
+			),
 		);
 		$palettes = array(
 			array(
@@ -961,7 +983,9 @@ class Starter_Templates {
 				'subscribe_progress'   => esc_html__( 'Getting Started', 'kadence-starter-templates' ),
 				'plugin_progress'      => esc_html__( 'Checking/Installing/Activating Required Plugins', 'kadence-starter-templates' ),
 				'content_progress'     => esc_html__( 'Importing Content...', 'kadence-starter-templates' ),
-				'content_new_progress' => esc_html__( 'Importing Content... Still Importing.', 'kadence-starter-templates' ),
+				'content_new_progress' => esc_html__( 'Importing Content... Creating pages.', 'kadence-starter-templates' ),
+				'content_newer_progress' => esc_html__( 'Importing Content... Downloading images.', 'kadence-starter-templates' ),
+				'content_newest_progress' => esc_html__( 'Importing Content... Still Importing.', 'kadence-starter-templates' ),
 				'widgets_progress'     => esc_html__( 'Importing Widgets...', 'kadence-starter-templates' ),
 				'customizer_progress'  => esc_html__( 'Importing Customizer Settings...', 'kadence-starter-templates' ),
 				'user_email'           => $user_email,
@@ -1138,6 +1162,27 @@ class Starter_Templates {
 					'base'  => 'restrict-content',
 					'slug'  => 'restrictcontent',
 					'path'  => 'restrict-content/restrictcontent.php',
+					'src'   => 'repo',
+				),
+				'kadence-woo-extras' => array(
+					'title' => 'Kadence Shop Kit',
+					'base'  => 'kadence-woo-extras',
+					'slug'  => 'kadence-woo-extras',
+					'path'  => 'kadence-woo-extras/kadence-woo-extras.php',
+					'src'   => 'bundle',
+				),
+				'depicter' => array(
+					'title' => 'Depicter Slider',
+					'base'  => 'depicter',
+					'slug'  => 'depicter',
+					'path'  => 'depicter/depicter.php',
+					'src'   => 'repo',
+				),
+				'seriously-simple-podcasting' => array(
+					'title' => 'Seriously Simple Podcasting',
+					'base'  => 'seriously-simple-podcasting',
+					'slug'  => 'seriously-simple-podcasting',
+					'path'  => 'seriously-simple-podcasting/seriously-simple-podcasting.php',
 					'src'   => 'repo',
 				),
 			);
@@ -1369,6 +1414,27 @@ class Starter_Templates {
 					'path'  => 'restrict-content/restrictcontent.php',
 					'src'   => 'repo',
 				),
+				'kadence-woo-extras' => array(
+					'title' => 'Kadence Shop Kit',
+					'base'  => 'kadence-woo-extras',
+					'slug'  => 'kadence-woo-extras',
+					'path'  => 'kadence-woo-extras/kadence-woo-extras.php',
+					'src'   => 'bundle',
+				),
+				'depicter' => array(
+					'title' => 'Depicter Slider',
+					'base'  => 'depicter',
+					'slug'  => 'depicter',
+					'path'  => 'depicter/depicter.php',
+					'src'   => 'repo',
+				),
+				'seriously-simple-podcasting' => array(
+					'title' => 'Seriously Simple Podcasting',
+					'base'  => 'seriously-simple-podcasting',
+					'slug'  => 'seriously-simple-podcasting',
+					'path'  => 'seriously-simple-podcasting/seriously-simple-podcasting.php',
+					'src'   => 'repo',
+				),
 			);
 			foreach( $info['plugins'] as $plugin ) {
 				$path = false;
@@ -1390,6 +1456,9 @@ class Starter_Templates {
 					$state = Plugin_Check::active_check( $path );
 					if ( 'woocommerce' === $base && empty( get_option( 'woocommerce_db_version' ) ) ) {
 						update_option( 'woocommerce_db_version', '4.0' );
+					}
+					if ( 'woocommerce' === $base && ( 'notactive' === $state || 'installed' === $state ) ) {
+						$this->ss = true;
 					}
 					if ( 'unknown' === $src ) {
 						$check_api = plugins_api(
@@ -1448,7 +1517,7 @@ class Starter_Templates {
 
 							$installed = $upgrader->install( $api->download_link );
 							if ( $installed ) {
-								$silent = ( 'give' === $base || 'elementor' === $base ? false : true );
+								$silent = ( 'give' === $base || 'elementor' === $base || 'restrict-content' === $base ? false : true );
 								if ( 'give' === $base ) {
 									add_option( 'give_install_pages_created', 1, '', false );
 								}
@@ -1469,13 +1538,14 @@ class Starter_Templates {
 						if ( ! current_user_can( 'install_plugins' ) ) {
 							wp_send_json_error( 'Permissions Issue' );
 						}
-						//$silent = false; 
-						$silent = ( 'give' === $base || 'elementor' === $base ? false : true );
+						$silent = false; 
+						//$silent = ( 'give' === $base || 'elementor' === $base ? false : true );
 						if ( 'give' === $base ) {
 							// Make sure give doesn't add it's pages, prevents having two sets.
 							update_option( 'give_install_pages_created', 1, '', false );
 						}
 						if ( 'restrict-content' === $base ) {
+							$silent = true;
 							update_option( 'rcp_install_pages_created', current_time( 'mysql' ) );
 						}
 						$activate = activate_plugin( $path, '', false, $silent );
@@ -1511,6 +1581,7 @@ class Starter_Templates {
 	public function subscribe_ajax_callback() {
 		Helpers::verify_ajax_call();
 		$email = empty( $_POST['email'] ) ? '' : sanitize_text_field( $_POST['email'] );
+		$selected_index = empty( $_POST['selected'] ) ? '' : sanitize_text_field( $_POST['selected'] );
 		// Do you have the data?
 		if ( $email && is_email( $email ) && filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
 			list( $user, $domain ) = explode( '@', $email );
@@ -1524,9 +1595,10 @@ class Starter_Templates {
 				return wp_send_json( 'emailDomainPostError' );
 			}
 			$args = array(
-				'email'  => $email,
-				'tag'    => 'wire',
-				'list'   => '20',
+				'email'   => $email,
+				'tag'     => 'starter',
+				'list'    => '20',
+				'starter' => $selected_index,
 			);
 			// Get the response.
 			$api_url  = add_query_arg( $args, 'https://www.kadencewp.com/kadence-blocks/wp-json/kadence-subscribe/v1/subscribe/' );
@@ -1609,7 +1681,6 @@ class Starter_Templates {
 		$use_existing_importer_data = $this->use_existing_importer_data();
 
 		if ( ! $use_existing_importer_data ) {
-
 			// Create a date and time string to use for demo and log file names.
 			Helpers::set_demo_import_start_time();
 
@@ -1674,9 +1745,11 @@ class Starter_Templates {
 		Helpers::set_import_data_transient( $this->get_current_importer_data() );
 
 		// If elementor make sure the defaults are off.
+		$elementor = false;
 		if ( isset( $this->import_files[ $this->selected_index ]['type'] ) && 'elementor' === $this->import_files[ $this->selected_index ]['type'] ) {
 			update_option( 'elementor_disable_color_schemes', 'yes' );
 			update_option( 'elementor_disable_typography_schemes', 'yes' );
+			$elementor = true;
 			if ( class_exists( 'Kadence\Theme' ) ) {
 				$component = \Kadence\Theme::instance()->components['elementor'];
 				if ( $component ) {
@@ -1692,7 +1765,7 @@ class Starter_Templates {
 		$new_post = '';
 		if ( ! empty( $this->selected_import_files['content'] ) ) {
 			$meta = ( ! empty( $this->import_files[ $this->selected_index ] ) && ! empty( $this->selected_page ) && isset( $this->import_files[ $this->selected_index ]['pages'] ) && isset( $this->import_files[ $this->selected_index ]['pages'][ $this->selected_page ] ) && isset( $this->import_files[ $this->selected_index ]['pages'][ $this->selected_page ]['meta'] ) ? $this->import_files[ $this->selected_index ]['pages'][ $this->selected_page ]['meta'] : 'inherit' );
-			$logger = $this->importer->import_content( $this->selected_import_files['content'], true, $meta );
+			$logger = $this->importer->import_content( $this->selected_import_files['content'], true, $meta, $elementor );
 			if ( is_object( $logger ) && property_exists( $logger, 'error_output' ) && $logger->error_output ) {
 				$this->append_to_frontend_error_messages( $logger->error_output );
 			} elseif ( is_object( $logger ) && $logger->messages ) {
@@ -2063,6 +2136,9 @@ class Starter_Templates {
 				wp_send_json( esc_html__( 'No import files specified!', 'kadence-starter-templates' ) );
 			}
 		}
+		// if ( class_exists( 'woocommerce' ) && isset( $this->import_files[ $this->selected_index ]['ecommerce'] ) && $this->import_files[ $this->selected_index ]['ecommerce'] && ! $this->import_woo_pages ) {
+		// 	add_filter( 'stop_importing_woo_pages', '__return_true' );
+		// }
 		// If elementor make sure the defaults are off.
 		if ( isset( $this->import_files[ $this->selected_index ]['type'] ) && 'elementor' === $this->import_files[ $this->selected_index ]['type'] ) {
 			update_option( 'elementor_disable_color_schemes', 'yes' );
@@ -2097,6 +2173,20 @@ class Starter_Templates {
 				wp_delete_post( $sample_page->ID, true ); // Sample Page.
 			}
 			wp_delete_comment( 1, true ); // WordPress comment.
+			/**
+			 * Clean up default woocommerce.
+			 */
+			$woopages = array(
+				'woocommerce_shop_page_id'      => 'shop',
+				'woocommerce_cart_page_id'      => 'cart',
+				'woocommerce_checkout_page_id'  => 'checkout',
+				'woocommerce_myaccount_page_id' => 'my-account',
+			);
+			foreach ( $woopages as $woo_page_option => $woo_page_slug ) {
+				if ( get_option( $woo_page_option ) ) {
+					wp_delete_post( get_option( $woo_page_option ), true );
+				}
+			}
 			// Move All active widgets into inactive.
 			$sidebars = wp_get_sidebars_widgets();
 			if ( is_array( $sidebars ) ) {
@@ -2212,17 +2302,99 @@ class Starter_Templates {
 	public function import_customizer_data_ajax_callback() {
 		// Verify if the AJAX call is valid (checks nonce and current_user_can).
 		Helpers::verify_ajax_call();
+		$use_existing_importer_data = $this->use_existing_importer_data();
 
-		// Get existing import data.
-		if ( $this->use_existing_importer_data() ) {
+		if ( ! $use_existing_importer_data ) {
+			// Create a date and time string to use for demo and log file names.
+			Helpers::set_demo_import_start_time();
+
+			if ( apply_filters( 'kadence_starter_templates_save_log_files', false ) ) {
+				// Define log file path.
+				$this->log_file_path = Helpers::get_log_path();
+			} else {
+				$this->log_file_path = '';
+			}
+
+			// Get selected file index or set it to 0.
+			$this->selected_index   = empty( $_POST['selected'] ) ? '' : sanitize_text_field( $_POST['selected'] );
+			$this->selected_palette = empty( $_POST['palette'] ) ? '' : sanitize_text_field( $_POST['palette'] );
+			$this->selected_font    = empty( $_POST['font'] ) ? '' : sanitize_text_field( $_POST['font'] );
+			$this->selected_builder = empty( $_POST['builder'] ) ? 'blocks' : sanitize_text_field( $_POST['builder'] );
+
+			if ( empty( $this->import_files ) || ( is_array( $this->import_files ) && ! isset( $this->import_files[ $this->selected_index ] ) ) ) {
+				$template_database  = Template_Database_Importer::get_instance();
+				$this->import_files = $template_database->get_importer_files( $this->selected_index, $this->selected_builder );
+			}
+			if ( ! isset( $this->import_files[ $this->selected_index ] ) ) {
+				// Send JSON Error response to the AJAX call.
+				wp_send_json( esc_html__( 'No import files specified!', 'kadence-starter-templates' ) );
+			}
 			/**
-			 * Execute the customizer import actions.
-			 *
-			 * Default actions:
-			 * 1 - Customizer import (with priority 10).
+			 * 1). Prepare import files.
+			 * Predefined import files via filter: kadence-starter-templates/import_files
 			 */
-			do_action( 'kadence-starter-templates/customizer_import_execution', $this->selected_import_files );
+			if ( ! empty( $this->import_files[ $this->selected_index ] ) ) { // Use predefined import files from wp filter: kadence-starter-templates/import_files.
+
+				// Download the import files (content, widgets and customizer files).
+				$this->selected_import_files = Helpers::download_import_files( $this->import_files[ $this->selected_index ] );
+				// Check Errors.
+				if ( is_wp_error( $this->selected_import_files ) ) {
+					// Write error to log file and send an AJAX response with the error.
+					Helpers::log_error_and_send_ajax_response(
+						$this->selected_import_files->get_error_message(),
+						$this->log_file_path,
+						esc_html__( 'Downloaded files', 'kadence-starter-templates' )
+					);
+				}
+				if ( apply_filters( 'kadence_starter_templates_save_log_files', false ) ) {
+					// Add this message to log file.
+					$log_added = Helpers::append_to_file(
+						sprintf(
+							__( 'The import files for: %s were successfully downloaded!', 'kadence-starter-templates' ),
+							$this->import_files[ $this->selected_index ]['slug']
+						) . Helpers::import_file_info( $this->selected_import_files ),
+						$this->log_file_path,
+						esc_html__( 'Downloaded files' , 'kadence-starter-templates' )
+					);
+				}
+			} else {
+				// Send JSON Error response to the AJAX call.
+				wp_send_json( esc_html__( 'No import files specified!', 'kadence-starter-templates' ) );
+			}
+			// If elementor make sure the defaults are off.
+			if ( isset( $this->import_files[ $this->selected_index ]['type'] ) && 'elementor' === $this->import_files[ $this->selected_index ]['type'] ) {
+				update_option( 'elementor_disable_color_schemes', 'yes' );
+				update_option( 'elementor_disable_typography_schemes', 'yes' );
+			}
+			// Save the initial import data as a transient, so other import parts (in new AJAX calls) can use that data.
+			Helpers::set_import_data_transient( $this->get_current_importer_data() );
+			if ( ! $this->before_import_executed ) {
+				$this->before_import_executed = true;
+	
+				/**
+				 * Save Current Theme mods for a potential undo.
+				 */
+				update_option( '_kadence_starter_templates_old_customizer', get_option( 'theme_mods_' . get_option( 'stylesheet' ) ) );
+				// Save Import data for use if we need to reset it.
+				update_option( '_kadence_starter_templates_last_import_data', $this->import_files[ $this->selected_index ], 'no' );
+				// Reset to default settings values.
+				delete_option( 'theme_mods_' . get_option( 'stylesheet' ) );
+				// Reset Global Palette
+				if ( get_option( 'kadence_global_palette' ) !== false ) {
+					// The option already exists, so update it.
+					update_option( 'kadence_global_palette', '{"palette":[{"color":"#3182CE","slug":"palette1","name":"Palette Color 1"},{"color":"#2B6CB0","slug":"palette2","name":"Palette Color 2"},{"color":"#1A202C","slug":"palette3","name":"Palette Color 3"},{"color":"#2D3748","slug":"palette4","name":"Palette Color 4"},{"color":"#4A5568","slug":"palette5","name":"Palette Color 5"},{"color":"#718096","slug":"palette6","name":"Palette Color 6"},{"color":"#EDF2F7","slug":"palette7","name":"Palette Color 7"},{"color":"#F7FAFC","slug":"palette8","name":"Palette Color 8"},{"color":"#ffffff","slug":"palette9","name":"Palette Color 9"}],"second-palette":[{"color":"#3182CE","slug":"palette1","name":"Palette Color 1"},{"color":"#2B6CB0","slug":"palette2","name":"Palette Color 2"},{"color":"#1A202C","slug":"palette3","name":"Palette Color 3"},{"color":"#2D3748","slug":"palette4","name":"Palette Color 4"},{"color":"#4A5568","slug":"palette5","name":"Palette Color 5"},{"color":"#718096","slug":"palette6","name":"Palette Color 6"},{"color":"#EDF2F7","slug":"palette7","name":"Palette Color 7"},{"color":"#F7FAFC","slug":"palette8","name":"Palette Color 8"},{"color":"#ffffff","slug":"palette9","name":"Palette Color 9"}],"third-palette":[{"color":"#3182CE","slug":"palette1","name":"Palette Color 1"},{"color":"#2B6CB0","slug":"palette2","name":"Palette Color 2"},{"color":"#1A202C","slug":"palette3","name":"Palette Color 3"},{"color":"#2D3748","slug":"palette4","name":"Palette Color 4"},{"color":"#4A5568","slug":"palette5","name":"Palette Color 5"},{"color":"#718096","slug":"palette6","name":"Palette Color 6"},{"color":"#EDF2F7","slug":"palette7","name":"Palette Color 7"},{"color":"#F7FAFC","slug":"palette8","name":"Palette Color 8"},{"color":"#ffffff","slug":"palette9","name":"Palette Color 9"}],"active":"palette"}' );
+				}
+			}
 		}
+		
+	
+		/**
+		 * Execute the customizer import actions.
+		 *
+		 * Default actions:
+		 * 1 - Customizer import (with priority 10).
+		 */
+		do_action( 'kadence-starter-templates/customizer_import_execution', $this->selected_import_files );
 
 		// Request the after all import AJAX call.
 		if ( false !== has_action( 'kadence-starter-templates/after_all_import_execution' ) ) {
