@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "create-block/samarytanin-custom-blocks",
+  "version": "0.1.0",
+  "title": "Samarytanin Giveaway Block",
+  "category": "common",
+  "icon": "awards",
+  "description": "Giveway and Reward Block",
+  "supports": {
+    "html": false
+  },
+  "textdomain": "samarytanin-custom-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
