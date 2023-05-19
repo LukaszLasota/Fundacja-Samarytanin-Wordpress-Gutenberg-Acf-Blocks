@@ -28,5 +28,5 @@ foreach($allFiles as $filename) {
   include_once($filename);
 }
 
-register_activation_hook(__FILE__, 'up_activate_plugin');
 add_action('init', 'up_register_blocks');
+add_shortcode( 'pdfjs-viewer', 'pdfjs_handler' );

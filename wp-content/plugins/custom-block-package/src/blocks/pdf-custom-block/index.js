@@ -1,8 +1,4 @@
 import { __ } from '@wordpress/i18n';
-
-// import './editor.scss';
-// import './style.scss';
-
 import { registerBlockType } from '@wordpress/blocks'
 import block from './block.json'
 const { MediaUpload, InspectorControls } = wp.blockEditor;
@@ -252,6 +248,14 @@ edit( props ) {
             ) }
         </div>,
     ];
+},
+
+save(props) {
+    return (
+        <div className="pdfjs-wrapper">
+            {`[pdfjs-viewer attachment_id=${ props.attributes.imgID } url=${ props.attributes.imageURL } viewer_width=${ ( props.attributes.viewerWidth !== undefined ) ? props.attributes.viewerWidth : defaultWidth } viewer_height=${ ( props.attributes.viewerHeight !== undefined ) ? props.attributes.viewerHeight : defaultHeight } url=${ props.attributes.imageURL } download=${ props.attributes.showDownload.toString() } print=${ props.attributes.showPrint.toString() } fullscreen=${ props.attributes.showFullscreen.toString() } fullscreen_target=${ props.attributes.openFullscreen.toString() } fullscreen_text="${ props.attributes.fullscreenText }" zoom=${ props.attributes.viewerScale.toString()}  ]`}
+        </div>
+    );
 },
 
 })

@@ -95,10 +95,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import './editor.scss';
-// import './style.scss';
-
-
 
 const {
   MediaUpload,
@@ -305,6 +301,11 @@ const ALLOWED_MEDIA_TYPES = ['application/pdf'];
         }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Choose PDF', 'pdfjs-viewer-shortcode'));
       }
     })))];
+  },
+  save(props) {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "pdfjs-wrapper"
+    }, `[pdfjs-viewer attachment_id=${props.attributes.imgID} url=${props.attributes.imageURL} viewer_width=${props.attributes.viewerWidth !== undefined ? props.attributes.viewerWidth : defaultWidth} viewer_height=${props.attributes.viewerHeight !== undefined ? props.attributes.viewerHeight : defaultHeight} url=${props.attributes.imageURL} download=${props.attributes.showDownload.toString()} print=${props.attributes.showPrint.toString()} fullscreen=${props.attributes.showFullscreen.toString()} fullscreen_target=${props.attributes.openFullscreen.toString()} fullscreen_text="${props.attributes.fullscreenText}" zoom=${props.attributes.viewerScale.toString()}  ]`);
   }
 });
 })();
