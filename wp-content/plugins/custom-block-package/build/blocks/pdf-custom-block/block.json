@@ -26,26 +26,11 @@
     "showDownload": {
       "type": "boolean"
     },
-    "showPrint": {
-      "type": "boolean"
-    },
-    "showFullscreen": {
-      "type": "boolean"
-    },
-    "openFullscreen": {
-      "type": "boolean"
-    },
-    "fullscreenText": {
-      "type": "string"
-    },
     "viewerHeight": {
       "type": "number"
     },
     "viewerWidth": {
       "type": "number"
-    },
-    "viewerScale": {
-      "type": "string"
     }
   },
   "style": "file:./index.css"

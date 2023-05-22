@@ -29,4 +29,3 @@ foreach($allFiles as $filename) {
 }
 
 add_action('init', 'up_register_blocks');
-add_shortcode( 'pdfjs-viewer', 'pdfjs_handler' );

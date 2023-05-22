@@ -2,6 +2,16 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "@wordpress/block-editor":
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["blockEditor"];
+
+/***/ }),
+
 /***/ "@wordpress/blocks":
 /*!********************************!*\
   !*** external ["wp","blocks"] ***!
@@ -9,6 +19,16 @@
 /***/ ((module) => {
 
 module.exports = window["wp"]["blocks"];
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["components"];
 
 /***/ }),
 
@@ -38,7 +58,7 @@ module.exports = window["wp"]["i18n"];
   \************************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"custom-block-package/pdf-custom-block","title":"PDF Custom Block","icon":"media-document","category":"common","description":"Adds a header with a hover effect","keywords":["pdf"],"version":"1","textdomain":"pdf-custom-block","editorScript":"file:./index.js","attributes":{"imageURL":{"type":"string"},"imgID":{"type":"number"},"imgTitle":{"type":"string","default":"PDF File"},"showDownload":{"type":"boolean"},"showPrint":{"type":"boolean"},"showFullscreen":{"type":"boolean"},"openFullscreen":{"type":"boolean"},"fullscreenText":{"type":"string"},"viewerHeight":{"type":"number"},"viewerWidth":{"type":"number"},"viewerScale":{"type":"string"}},"style":"file:./index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"custom-block-package/pdf-custom-block","title":"PDF Custom Block","icon":"media-document","category":"common","description":"Adds a header with a hover effect","keywords":["pdf"],"version":"1","textdomain":"pdf-custom-block","editorScript":"file:./index.js","attributes":{"imageURL":{"type":"string"},"imgID":{"type":"number"},"imgTitle":{"type":"string","default":"PDF File"},"showDownload":{"type":"boolean"},"viewerHeight":{"type":"number"},"viewerWidth":{"type":"number"}},"style":"file:./index.css"}');
 
 /***/ })
 
@@ -92,23 +112,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block.json */ "./src/blocks/pdf-custom-block/block.json");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 
 
 
+// import './editor.scss';
+// import './style.scss';
 
-const {
-  MediaUpload,
-  InspectorControls
-} = wp.blockEditor;
-const {
-  Button,
-  PanelRow,
-  PanelBody,
-  ToggleControl,
-  RangeControl,
-  SelectControl,
-  TextControl
-} = wp.components;
+// const { registerBlockType } = wp.blocks;
+
+
+
 const defaultHeight = 800;
 const defaultWidth = 0;
 const ALLOWED_MEDIA_TYPES = ['application/pdf'];
@@ -133,21 +148,6 @@ const ALLOWED_MEDIA_TYPES = ['application/pdf'];
         showDownload: value
       });
     };
-    const onTogglePrint = value => {
-      props.setAttributes({
-        showPrint: value
-      });
-    };
-    const onToggleFullscreen = value => {
-      props.setAttributes({
-        showFullscreen: value
-      });
-    };
-    const onToggleOpenFullscreen = value => {
-      props.setAttributes({
-        openFullscreen: value
-      });
-    };
     const onHeightChange = value => {
       // handle the reset button
       if (undefined === value) {
@@ -166,49 +166,18 @@ const ALLOWED_MEDIA_TYPES = ['application/pdf'];
         viewerWidth: value
       });
     };
-    const onScaleChange = value => {
-      value = value.replace(/(<([^>]+)>)/gi, "");
-      props.setAttributes({
-        viewerScale: value
-      });
-    };
-    const onFullscreenTextChange = value => {
-      value = value.replace(/(<([^>]+)>)/gi, "");
-      props.setAttributes({
-        fullscreenText: value
-      });
-    };
-    return [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
+    return [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.InspectorControls, {
       key: "i1"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('PDF.js Options', 'pdfjs-viewer-shortcode')
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Download Option', 'pdfjs-viewer-shortcode'),
       help: props.attributes.showDownload ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Yes', 'pdfjs-viewer-shortcode') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('No', 'pdfjs-viewer-shortcode'),
       checked: props.attributes.showDownload,
       onChange: onToggleDownload
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Print Option', 'pdfjs-viewer-shortcode'),
-      help: props.attributes.showPrint ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Yes', 'pdfjs-viewer-shortcode') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('No', 'pdfjs-viewer-shortcode'),
-      checked: props.attributes.showPrint,
-      onChange: onTogglePrint
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Fullscreen Option', 'pdfjs-viewer-shortcode'),
-      help: props.attributes.showFullscreen ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Yes', 'pdfjs-viewer-shortcode') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('No', 'pdfjs-viewer-shortcode'),
-      checked: props.attributes.showFullscreen,
-      onChange: onToggleFullscreen
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Open Fullscreen in new tab?', 'pdfjs-viewer-shortcode'),
-      help: props.attributes.openFullscreen ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Yes', 'pdfjs-viewer-shortcode') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('No', 'pdfjs-viewer-shortcode'),
-      checked: props.attributes.openFullscreen,
-      onChange: onToggleOpenFullscreen
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: "Fullscreen Text",
-      value: props.attributes.fullscreenText,
-      onChange: onFullscreenTextChange
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Embed Height', 'pdfjs-viewer-shortcode')
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RangeControl, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.RangeControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Viewer Height (pixels)', 'pdfjs-viewer-shortcode'),
       value: props.attributes.viewerHeight,
       onChange: onHeightChange,
@@ -216,9 +185,9 @@ const ALLOWED_MEDIA_TYPES = ['application/pdf'];
       max: 5000,
       allowReset: true,
       initialPosition: defaultHeight
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Embed Width', 'pdfjs-viewer-shortcode')
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RangeControl, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.RangeControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Viewer Width (pixels)', 'pdfjs-viewer-shortcode'),
       help: "By default 0 will be 100%.",
       value: props.attributes.viewerWidth,
@@ -227,49 +196,6 @@ const ALLOWED_MEDIA_TYPES = ['application/pdf'];
       max: 5000,
       allowReset: true,
       initialPosition: defaultWidth
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Scale', 'pdfjs-viewer-shortcode')
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-      label: "Viewer Scale",
-      value: props.attributes.viewerScale,
-      options: [{
-        label: 'Automatic',
-        value: 'auto'
-      }, {
-        label: 'Actual Size',
-        value: 'page-actual'
-      }, {
-        label: 'Page Fit',
-        value: 'page-fit'
-      }, {
-        label: 'Page Width',
-        value: 'page-width'
-      }, {
-        label: '50%',
-        value: '50'
-      }, {
-        label: '75%',
-        value: '75'
-      }, {
-        label: '100%',
-        value: '100'
-      }, {
-        label: '125%',
-        value: '125'
-      }, {
-        label: '150%',
-        value: '150'
-      }, {
-        label: '200%',
-        value: '200'
-      }, {
-        label: '300%',
-        value: '300'
-      }, {
-        label: '400%',
-        value: '400'
-      }],
-      onChange: onScaleChange
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "pdfjs-wrapper components-placeholder",
       key: "i2",
@@ -284,10 +210,10 @@ const ALLOWED_MEDIA_TYPES = ['application/pdf'];
       className: "dashicons dashicons-media-document"
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: "pdfjs-title"
-    }, props.attributes.imgTitle ? props.attributes.imgTitle : props.attributes.imageURL)), props.isSelected ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    }, props.attributes.imgTitle ? props.attributes.imgTitle : props.attributes.imageURL)), props.isSelected ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Button, {
       className: "button",
       onClick: onRemoveImg
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Remove PDF', 'pdfjs-viewer-shortcode')) : null) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(MediaUpload, {
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Remove PDF', 'pdfjs-viewer-shortcode')) : null) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.MediaUpload, {
       onSelect: onFileSelect,
       allowedTypes: ALLOWED_MEDIA_TYPES,
       value: props.attributes.imgID,
@@ -295,7 +221,7 @@ const ALLOWED_MEDIA_TYPES = ['application/pdf'];
         let {
           open
         } = _ref;
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Button, {
           className: "button",
           onClick: open
         }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Choose PDF', 'pdfjs-viewer-shortcode'));
@@ -303,9 +229,10 @@ const ALLOWED_MEDIA_TYPES = ['application/pdf'];
     })))];
   },
   save(props) {
+    // let urlLink = props.attributes.imageURL
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "pdfjs-wrapper"
-    }, `[pdfjs-viewer attachment_id=${props.attributes.imgID} url=${props.attributes.imageURL} viewer_width=${props.attributes.viewerWidth !== undefined ? props.attributes.viewerWidth : defaultWidth} viewer_height=${props.attributes.viewerHeight !== undefined ? props.attributes.viewerHeight : defaultHeight} url=${props.attributes.imageURL} download=${props.attributes.showDownload.toString()} print=${props.attributes.showPrint.toString()} fullscreen=${props.attributes.showFullscreen.toString()} fullscreen_target=${props.attributes.openFullscreen.toString()} fullscreen_text="${props.attributes.fullscreenText}" zoom=${props.attributes.viewerScale.toString()}  ]`);
+    }, `[pdfjs-viewer attachment_id=${props.attributes.imgID} url=${props.attributes.imageURL} viewer_width=${props.attributes.viewerWidth !== undefined ? props.attributes.viewerWidth : defaultWidth} viewer_height=${props.attributes.viewerHeight !== undefined ? props.attributes.viewerHeight : defaultHeight} url=${props.attributes.imageURL} ]`);
   }
 });
 })();

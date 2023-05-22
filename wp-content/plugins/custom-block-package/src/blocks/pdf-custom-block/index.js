@@ -1,9 +1,13 @@
 import { __ } from '@wordpress/i18n';
-import { registerBlockType } from '@wordpress/blocks'
-import block from './block.json'
-const { MediaUpload, InspectorControls } = wp.blockEditor;
 
-const {
+// import './editor.scss';
+// import './style.scss';
+import { registerBlockType } from '@wordpress/blocks';
+// const { registerBlockType } = wp.blocks;
+import block from './block.json';
+import { MediaUpload, InspectorControls } from '@wordpress/block-editor';
+
+import {
 	Button,
 	PanelRow,
 	PanelBody,
@@ -11,7 +15,7 @@ const {
 	RangeControl,
 	SelectControl,
 	TextControl,
-} = wp.components;
+} from '@wordpress/components';
 
 const defaultHeight = 800;
 const defaultWidth = 0;
@@ -42,24 +46,6 @@ edit( props ) {
         } );
     };
 
-    const onTogglePrint = ( value ) => {
-        props.setAttributes( {
-            showPrint: value,
-        } );
-    };
-
-    const onToggleFullscreen = ( value ) => {
-        props.setAttributes( {
-            showFullscreen: value,
-        } );
-    };
-
-    const onToggleOpenFullscreen = ( value ) => {
-        props.setAttributes( {
-            openFullscreen: value,
-        } );
-    };
-
     const onHeightChange = ( value ) => {
         // handle the reset button
         if ( undefined === value ) {
@@ -80,19 +66,6 @@ edit( props ) {
         } );
     };
 
-    const onScaleChange = ( value ) => {
-        value = value.replace(/(<([^>]+)>)/gi, "")
-        props.setAttributes( {
-            viewerScale: value,
-        } );
-    };
-    const onFullscreenTextChange = ( value ) => {
-        value = value.replace(/(<([^>]+)>)/gi, "")
-        props.setAttributes( {
-            fullscreenText: value,
-        } );
-    };
-
     return [
         <InspectorControls key="i1">
             <PanelBody title={ __( 'PDF.js Options', 'pdfjs-viewer-shortcode' ) }>
@@ -109,55 +82,6 @@ edit( props ) {
                         }
                         checked={ props.attributes.showDownload }
                         onChange={ onToggleDownload }
-                    />
-                </PanelRow>
-                <PanelRow>
-                    <ToggleControl
-                        label={ __( 'Show Print Option', 'pdfjs-viewer-shortcode' ) }
-                        help={
-                            props.attributes.showPrint
-                                ? __( 'Yes', 'pdfjs-viewer-shortcode' )
-                                : __( 'No', 'pdfjs-viewer-shortcode' )
-                        }
-                        checked={ props.attributes.showPrint }
-                        onChange={ onTogglePrint }
-                    />
-                </PanelRow>
-                <PanelRow>
-                    <ToggleControl
-                        label={ __(
-                            'Show Fullscreen Option',
-                            'pdfjs-viewer-shortcode'
-                        ) }
-                        help={
-                            props.attributes.showFullscreen
-                                ? __( 'Yes', 'pdfjs-viewer-shortcode' )
-                                : __( 'No', 'pdfjs-viewer-shortcode' )
-                        }
-                        checked={ props.attributes.showFullscreen }
-                        onChange={ onToggleFullscreen }
-                    />
-                </PanelRow>
-                <PanelRow>
-                    <ToggleControl
-                        label={ __(
-                            'Open Fullscreen in new tab?',
-                            'pdfjs-viewer-shortcode'
-                        ) }
-                        help={
-                            props.attributes.openFullscreen
-                                ? __( 'Yes', 'pdfjs-viewer-shortcode' )
-                                : __( 'No', 'pdfjs-viewer-shortcode' )
-                        }
-                        checked={ props.attributes.openFullscreen }
-                        onChange={ onToggleOpenFullscreen }
-                    />
-                </PanelRow>
-                <PanelRow>
-                    <TextControl
-                        label="Fullscreen Text"
-                        value={ props.attributes.fullscreenText }
-                        onChange={ onFullscreenTextChange }
                     />
                 </PanelRow>
             </PanelBody>
@@ -188,27 +112,6 @@ edit( props ) {
                     max={ 5000 }
                     allowReset={ true }
                     initialPosition={ defaultWidth }
-                />
-            </PanelBody>
-            <PanelBody title={ __( 'Scale', 'pdfjs-viewer-shortcode' ) }>
-                <SelectControl
-                    label="Viewer Scale"
-                    value={ props.attributes.viewerScale }
-                    options={ [
-                        { label: 'Automatic', value: 'auto' },
-                        { label: 'Actual Size', value: 'page-actual' },
-                        { label: 'Page Fit', value: 'page-fit' },
-                        { label: 'Page Width', value: 'page-width' },
-                        { label: '50%', value: '50' },
-                        { label: '75%', value: '75' },
-                        { label: '100%', value: '100' },
-                        { label: '125%', value: '125' },
-                        { label: '150%', value: '150' },
-                        { label: '200%', value: '200' },
-                        { label: '300%', value: '300' },
-                        { label: '400%', value: '400' },
-                    ] }
-                    onChange={ onScaleChange }
                 />
             </PanelBody>
         </InspectorControls>,
@@ -251,9 +154,10 @@ edit( props ) {
 },
 
 save(props) {
+    // let urlLink = props.attributes.imageURL
     return (
         <div className="pdfjs-wrapper">
-            {`[pdfjs-viewer attachment_id=${ props.attributes.imgID } url=${ props.attributes.imageURL } viewer_width=${ ( props.attributes.viewerWidth !== undefined ) ? props.attributes.viewerWidth : defaultWidth } viewer_height=${ ( props.attributes.viewerHeight !== undefined ) ? props.attributes.viewerHeight : defaultHeight } url=${ props.attributes.imageURL } download=${ props.attributes.showDownload.toString() } print=${ props.attributes.showPrint.toString() } fullscreen=${ props.attributes.showFullscreen.toString() } fullscreen_target=${ props.attributes.openFullscreen.toString() } fullscreen_text="${ props.attributes.fullscreenText }" zoom=${ props.attributes.viewerScale.toString()}  ]`}
+            {`[pdfjs-viewer attachment_id=${ props.attributes.imgID } url=${ props.attributes.imageURL } viewer_width=${ ( props.attributes.viewerWidth !== undefined ) ? props.attributes.viewerWidth : defaultWidth } viewer_height=${ ( props.attributes.viewerHeight !== undefined ) ? props.attributes.viewerHeight : defaultHeight } url=${ props.attributes.imageURL } ]`}
         </div>
     );
 },

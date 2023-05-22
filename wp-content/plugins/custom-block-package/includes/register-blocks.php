@@ -2,7 +2,10 @@
 
 function up_register_blocks() {
   $blocks = [
-    [ 'name' => 'pdf-custom-block'],
+    [ 'name' => 'pdf-custom-block', ],
+    [ 'name' => 'pdf-block', ],
+
+    
     // [ 'name' => 'daily-recipe',  'options' => [
     //   'render_callback' => 'up_daily_recipe_cb'
     // ]],

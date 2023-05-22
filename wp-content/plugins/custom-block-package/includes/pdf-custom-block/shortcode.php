@@ -21,13 +21,13 @@ function pdfjs_handler( $incoming_from_post ) {
 			'url'               => plugin_dir_url( __DIR__ ) . '/pdf-loading-error.pdf',
 			'viewer_height'     => '800px',
 			'viewer_width'      => '100%',
-			'fullscreen'        => 'true',
-			'fullscreen_text'   => 'View Fullscreen',
-			'fullscreen_target' => 'false',
-			'download'          => 'true',
-			'print'             => 'true',
-			'openfile'          => 'false',
-			'zoom'              => 'auto',
+			// 'fullscreen'        => 'true',
+			// 'fullscreen_text'   => 'View Fullscreen',
+			// 'fullscreen_target' => 'false',
+			// 'download'          => 'true',
+			// 'print'             => 'true',
+			// 'openfile'          => 'false',
+			// 'zoom'              => 'auto',
 			'attachment_id'     => '',
 		),
 		$incoming_from_post
@@ -36,3 +36,5 @@ function pdfjs_handler( $incoming_from_post ) {
 	// send back text to replace shortcode in post.
 	return pdfjs_generator( $incoming_from_post );
 }
+
+add_shortcode( 'pdfjs-viewer', 'pdfjs_handler' );

@@ -1,0 +1,34 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "custom-block-package/pdf-block",
+    "title": "PDF Block",
+    "icon": "media-document",
+    "category": "common",
+    "description": "Adds a header with a hover effect",
+    "keywords": ["pdf"],
+    "version": "1",
+    "textdomain": "pdf-block",
+    "editorScript": "file:./index.js", 
+    "attributes": {
+		"pdfUrl": {
+			"type": "string"
+		},
+		"pdfID": {
+			"type": "number"
+		},
+		"pdfTitle": {
+			"type": "string",
+			"default": "PDF File"
+		},
+		"showDownload": {
+			"type": "boolean"
+		},
+		"viewerHeight": {
+			"type": "number"
+		},
+		"viewerWidth": {
+			"type": "number"
+		}
+	}
+  }
