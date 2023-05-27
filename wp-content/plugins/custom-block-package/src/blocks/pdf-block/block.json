@@ -5,11 +5,10 @@
     "title": "PDF Block",
     "icon": "media-document",
     "category": "common",
-    "description": "Adds a header with a hover effect",
+    "description": "Dodaj pdf który wyświetli się na stronie.",
     "keywords": ["pdf"],
     "version": "1",
-    "textdomain": "pdf-block",
-    "editorScript": "file:./index.js", 
+    "textdomain": "pdf-block", 
     "attributes": {
 		"pdfUrl": {
 			"type": "string"
@@ -18,8 +17,10 @@
 			"type": "number"
 		},
 		"pdfTitle": {
-			"type": "string",
-			"default": "PDF File"
+			"type": "string"
+		},
+		"btnTitle": {
+			"type": "string"
 		},
 		"showDownload": {
 			"type": "boolean"
@@ -30,5 +31,7 @@
 		"viewerWidth": {
 			"type": "number"
 		}
-	}
+	},
+	"editorScript": "file:./index.js",
+    "style": "file:./style-index.css"
   }

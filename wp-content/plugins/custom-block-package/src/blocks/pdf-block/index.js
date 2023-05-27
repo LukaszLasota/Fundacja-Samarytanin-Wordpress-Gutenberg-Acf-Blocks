@@ -1,21 +1,24 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, Button, ToggleControl, RangeControl } from '@wordpress/components';
+import { useBlockProps, InspectorControls, RichText } from '@wordpress/block-editor';
+import { PanelBody, PanelRow, Button, ToggleControl, RangeControl, } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import block from './block.json';
-import { MediaUpload } from '@wordpress/block-editor';
+import { MediaUpload, MediaPlaceholder } from '@wordpress/block-editor';
+import './style.scss';
 
 
 registerBlockType(block.name, {
   
 
   edit: ({ attributes, setAttributes }) => {
-    const { pdfUrl, pdfID, pdfTitle, showDownload, viewerHeight, viewerWidth } = attributes;
+    const { pdfUrl, showDownload, viewerHeight, viewerWidth, btnTitle, pdfTitle } = attributes;
+    const blockProps = useBlockProps();
 
     const onSelectPDF = (media) => {
       setAttributes({
         pdfUrl: media.url,
+        pdfTitle: media.title
       });
     };
 
@@ -31,10 +34,16 @@ registerBlockType(block.name, {
         } );
     };
 
+    const onDownloadButtonChange = ( checked ) => {
+      setAttributes( {
+        showDownload: checked,
+      } );
+  };
+
     return (
       <Fragment>
         <InspectorControls>
-          <PanelBody title={__('PDF Settings', 'custom-block-package')} initialOpen={true}>
+          <PanelBody title={__('PDF Ustawienia', 'custom-block-package')} initialOpen={true}>
             <PanelRow>
               <MediaUpload
                 onSelect={onSelectPDF}
@@ -42,62 +51,119 @@ registerBlockType(block.name, {
                 value={pdfUrl}
                 render={({ open }) => (
                   <Button isPrimary onClick={open}>
-                    {pdfUrl ? __('Change PDF', 'custom-block-package') : __('Upload PDF', 'custom-block-package')}
+                    {pdfUrl ? __('Zmień PDF', 'custom-block-package') : __('Dodaj PDF', 'custom-block-package')}
+                    
                   </Button>
                 )}
               />
             </PanelRow>
+            <PanelRow> 
+               <RichText
+                value={pdfTitle}
+                withoutInteractiveFormatting
+                placeholder={__("Tytuł pdf", "custom-block-package")}
+              />              
+            </PanelRow>
           </PanelBody>
-          <PanelBody title={ __( 'Embed Height', 'pdfjs-viewer-shortcode' ) }>
+          <PanelBody title={ __( 'Wysokość pdf', 'custom-block-package' ) }>
                 <RangeControl
                     label={ __(
-                        'Viewer Height (pixels)',
-                        'pdfjs-viewer-shortcode'
+                        'Wysokość pdf (piksele)',
+                        'custom-block-package'
                     ) }
                     value={ viewerHeight }
                     onChange={ onHeightChange }
                     min={ 0 }
-                    max={ 2000 }
+                    max={ 1500 }
                     allowReset={ true }
                 />
             </PanelBody>
-            <PanelBody title={ __( 'Embed Width', 'pdfjs-viewer-shortcode' ) }>
+            <PanelBody title={ __( 'Szerokość pdf', 'custom-block-package' ) }>
                 <RangeControl
                     label={ __(
-                        'Viewer Width (procents)',
-                        'pdfjs-viewer-shortcode'
+                        'Szerokość pdf (procenty)',
+                        'custom-block-package'
                     ) }
                     help="By default 0 will be 100%."
                     value={  viewerWidth }
                     onChange={ onWidthChange }
-                    min={ 0 }
+                    min={ 20 }
                     max={ 100 }
                     allowReset={ true }
                 />
             </PanelBody>
+            <PanelBody title={ __( 'Pokaż przycisk pobierz', 'custom-block-package' ) }>        
+              <ToggleControl
+                label={__('Pokaż/Ukryj przycisk', 'custom-block-package')}
+                help={
+                  showDownload ?
+                  __('Pokaż przycisk pobierz', 'custom-block-package') :
+                  __('Ukryj przycisk pobierz', 'custom-block-package')
+                }
+                checked={showDownload}
+                onChange={onDownloadButtonChange}
+                
+                // onChange={showDownload => setAttributes({ showDownload })}
+              />
+            </PanelBody>
+            <PanelBody title={ __( 'Wpisz tekst przycisku', 'custom-block-package' ) }>  
+               <RichText
+                value={btnTitle}
+                withoutInteractiveFormatting
+                onChange={(btnTitle) => setAttributes({ btnTitle })}
+                placeholder={__("Tytuł", "custom-block-package")}
+              />
+            </PanelBody>
         </InspectorControls>
-        <div className="pdf-block">
-          <div className="pdf-container">
-            {pdfUrl && (
-              <embed src={pdfUrl} type="application/pdf" width="100%" height="600px" />
-            )}
+        <section class="statut-page" {...blockProps}>
+          <div class="statut-page-head">
+            <div class="center-pdf">
+              {pdfUrl && (
+                  <embed src={pdfUrl} 
+                  type="application/pdf" 
+                  width={viewerWidth + "%"} 
+                  height={viewerHeight + "px"}  
+                  /> 
+                )}
+                {
+                  showDownload && ( 
+                    <div class="center-pdf__btn">
+                      <a class="more" href={pdfUrl}>{btnTitle}</a>
+                    </div>
+                  )
+                }
+            </div>
           </div>
-        </div>
+        </section>
       </Fragment>
     );
   },
 
   save: ({ attributes }) => {
-    const { pdfUrl, pdfID, pdfTitle, showDownload, viewerHeight, viewerWidth } = attributes;
+    const { pdfUrl, viewerHeight, viewerWidth, showDownload, btnTitle  } = attributes;
+    const blockProps = useBlockProps.save();
 
     return (
-      <div className="pdf-block">
-        <div className="pdf-container">
-          {pdfUrl && (
-            <embed src={pdfUrl} type="application/pdf" width={viewerWidth} height={viewerHeight} />
-          )}
+      <section class="statut-page" {...blockProps}>
+      <div class="statut-page-head">
+        <div class="center-pdf">
+              {pdfUrl && (
+                  <embed src={pdfUrl} 
+                  type="application/pdf" 
+                  width={viewerWidth + "%"} 
+                  height={viewerHeight + "px"}  
+                  />
+                )}
+              {
+                showDownload && ( 
+                  <div class="center-pdf__btn">
+                      <a class="more" href={pdfUrl}>{btnTitle}</a>
+                  </div>
+                )
+              }
         </div>
       </div>
+    </section>
     );
   },
 });
