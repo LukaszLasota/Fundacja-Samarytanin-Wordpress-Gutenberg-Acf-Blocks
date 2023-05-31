@@ -1,0 +1,59 @@
+/*!
+Theme Name: Samarytanin
+Author: Łukasz Lasota
+Author URI: https://github.com/LukaszLasota
+Description: Hi. I'm a starter theme based on _s or underscores
+Version: 1.0.0
+License: GNU General Public License v2 or later
+Text Domain: Samarytanin
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+
+@font-face {
+  font-family: "Didot";
+  src: url('./font/Didot\ Regular.ttf')
+}
+
+// Import variables and mixins.
+@import "abstracts/abstracts";
+
+/*--------------------------------------------------------------
+# Generic
+--------------------------------------------------------------*/
+
+/* Normalize
+--------------------------------------------- */
+@import "generic/normalize";
+
+/* Box sizing
+--------------------------------------------- */
+@import "generic/box-sizing";
+
+/*--------------------------------------------------------------
+# Base
+--------------------------------------------------------------*/
+@import "base/base";
+
+/*--------------------------------------------------------------
+# Components
+--------------------------------------------------------------*/
+@import "components/components";
+
+/*--------------------------------------------------------------
+# Plugins
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Utilities
+--------------------------------------------------------------*/
+
+/* Accessibility
+--------------------------------------------- */
+@import "utilities/accessibility";
+
+/* Alignments
+--------------------------------------------- */
+@import "utilities/alignments";
+
+/* Blocks
+--------------------------------------------- */
+@import "./blocks/all";

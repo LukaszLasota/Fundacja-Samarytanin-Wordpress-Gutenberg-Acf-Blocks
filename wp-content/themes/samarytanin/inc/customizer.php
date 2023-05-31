@@ -63,6 +63,6 @@ function samarytanin_customize_partial_blogdescription() {
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function samarytanin_customize_preview_js() {
-	wp_enqueue_script( '_s-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), SAMARYTANIN_VERSION, true );
+	wp_enqueue_script( 'customizer_js', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), SAMARYTANIN_VERSION, true );
 }
 add_action( 'customize_preview_init', 'samarytanin_customize_preview_js' );

@@ -1,7 +1,0 @@
-{
-  "extends": ["plugin:@wordpress/eslint-plugin/esnext"],
-  "env": {
-    "browser": true
-  },
-  "indent": ["error", 2]
-}

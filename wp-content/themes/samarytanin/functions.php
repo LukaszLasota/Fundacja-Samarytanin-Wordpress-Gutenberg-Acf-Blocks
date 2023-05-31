@@ -158,33 +158,46 @@ add_action( 'widgets_init', 'samarytanin_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
-function samarytanin_scripts() {
-	wp_enqueue_style( 'samarytanin-style', get_stylesheet_uri(), array(), SAMARYTANIN_VERSION );
-	wp_style_add_data( 'samarytanin-style', 'rtl', 'replace' );
+// function samarytanin_scripts() {
+// 	wp_enqueue_style( 'samarytanin-style', get_stylesheet_uri(), array(), SAMARYTANIN_VERSION );
+// 	wp_style_add_data( 'samarytanin-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'samarytanin-navigation', get_template_directory_uri() . '/js/navigation.js', array(), SAMARYTANIN_VERSION, true );
-	wp_enqueue_script( 'samarytanin-js', get_template_directory_uri() . '/js/main.js', array('jquery'), SAMARYTANIN_VERSION, true );
+// 	wp_enqueue_script( 'samarytanin-navigation', get_template_directory_uri() . '/js/navigation.js', array(), SAMARYTANIN_VERSION, true );
+// 	wp_enqueue_script( 'samarytanin-js', get_template_directory_uri() . '/js/main.js', array('jquery'), SAMARYTANIN_VERSION, true );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'samarytanin_scripts' );
+// 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+// 		wp_enqueue_script( 'comment-reply' );
+// 	}
+// }
+// add_action( 'wp_enqueue_scripts', 'samarytanin_scripts' );
+
+
+function enqueue_webpack_scripts() {
+
+	
+    $cssFilePath = glob( get_stylesheet_directory() . '/css/build/main.min.*.css' );
+    $cssFileURI = get_stylesheet_directory_uri() . '/css/build/' . basename($cssFilePath[0]);
+    wp_enqueue_style( 'main_css', $cssFileURI );
+
+    $jsFilePath = glob( get_stylesheet_directory() . '/js/build/main.min.*.js' );
+    $jsFileURI = get_stylesheet_directory_uri() . '/js/build/' . basename($jsFilePath[0]);
+    wp_enqueue_script( 'main_js', $jsFileURI , null , null , true );
+
+    // wp_localize_script('main_js', 'wpApiSettings', array(
+
+    //   'root' => esc_url_raw( rest_url() ), 
+    //   'nonce' => wp_create_nonce( 'wp_rest' ),
+    //   'my_home_url' => esc_url( home_url() ),
+    // ));
+
+  }
+  add_action( 'wp_enqueue_scripts', 'enqueue_webpack_scripts' );
 
 /**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
 
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
 
 /**
  * Customizer additions.
@@ -192,20 +205,6 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 require get_template_directory() . '/inc/my-customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
-
-/**
- * Load WooCommerce compatibility file.
- */
-if ( class_exists( 'WooCommerce' ) ) {
-	require get_template_directory() . '/inc/woocommerce.php';
-}
 
 /**
  * Load gutenberg blocks.
