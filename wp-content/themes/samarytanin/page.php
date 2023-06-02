@@ -1,39 +1,19 @@
 <?php
 /**
  * The template for displaying all pages
- *Template Name: Podstawowy szablon
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * Template Name: Podstawowy szablon
  *
  * @package samarytanin
  */
 
-get_header();
-?>
+get_header(); ?>
 
 	<main id="primary" class="site-main">
-		<header>
-		<!-- <h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1> -->
-		</header>
 		<?php
-		the_content();
-		while ( have_posts() ) :
-			the_post();
-
-			
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			
-
-		endwhile; // End of the loop.
+			the_content();
 		?>
 
-	</main><!-- #main -->
+	</main>
 
 <?php
-
 get_footer();

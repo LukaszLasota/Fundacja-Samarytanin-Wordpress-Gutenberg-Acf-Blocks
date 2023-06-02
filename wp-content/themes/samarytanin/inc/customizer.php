@@ -2,7 +2,6 @@
 /**
  * Samarytanin Theme Customizer
  *
- * @package samarytanin
  */
 
 /**

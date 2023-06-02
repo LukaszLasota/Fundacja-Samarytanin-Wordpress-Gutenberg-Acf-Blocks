@@ -2,7 +2,6 @@
 /**
  * Samarytanin Theme My Customizer Options
  *
- * @package samarytanin
  */
 
 function samarytanin_personal_customize_register( $wp_customize ) {

@@ -158,21 +158,8 @@ add_action( 'widgets_init', 'samarytanin_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
-// function samarytanin_scripts() {
-// 	wp_enqueue_style( 'samarytanin-style', get_stylesheet_uri(), array(), SAMARYTANIN_VERSION );
-// 	wp_style_add_data( 'samarytanin-style', 'rtl', 'replace' );
 
-// 	wp_enqueue_script( 'samarytanin-navigation', get_template_directory_uri() . '/js/navigation.js', array(), SAMARYTANIN_VERSION, true );
-// 	wp_enqueue_script( 'samarytanin-js', get_template_directory_uri() . '/js/main.js', array('jquery'), SAMARYTANIN_VERSION, true );
-
-// 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-// 		wp_enqueue_script( 'comment-reply' );
-// 	}
-// }
-// add_action( 'wp_enqueue_scripts', 'samarytanin_scripts' );
-
-
-function enqueue_webpack_scripts() {
+function enqueue_samarytanin_scripts() {
 
 	
     $cssFilePath = glob( get_stylesheet_directory() . '/css/build/main.min.*.css' );
@@ -191,13 +178,7 @@ function enqueue_webpack_scripts() {
     // ));
 
   }
-  add_action( 'wp_enqueue_scripts', 'enqueue_webpack_scripts' );
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
-
+  add_action( 'wp_enqueue_scripts', 'enqueue_samarytanin_scripts' );
 
 /**
  * Customizer additions.
