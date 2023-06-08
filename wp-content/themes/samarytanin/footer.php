@@ -7,7 +7,7 @@
 	<div class="footer">       
 		<div class="footer-container">
 			<div class="footer-one">
-				<h3 class="footer-h3">MENU</h3>
+				<h3 class="footer-h3"><?php _e( 'MENU', 'samarytanin' ); ?></h3>
 				<?php 
 				wp_nav_menu(
 					array(
@@ -18,7 +18,7 @@
 				?>      
 			</div> 
 			<div class="footer-two">
-				<h3 class="footer-h3">Kontakt</h3>
+				<h3 class="footer-h3"><?php _e( 'Kontakt', 'samarytanin' ); ?></h3>
 				<?php 
 				wp_nav_menu(
 					array(

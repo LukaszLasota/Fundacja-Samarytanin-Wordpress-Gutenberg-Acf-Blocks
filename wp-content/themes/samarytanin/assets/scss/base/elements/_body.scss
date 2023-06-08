@@ -51,9 +51,11 @@ img {
   }
 }
 
-// .mobile-main,
-// .mobile-main-service,
-// .mobile-main-contact,
-// .content-mobile-subpage {
-//   display: none;
-// }
+.no-site-content, .entry-content{
+  padding: 200px 0 200px;
+  @include flex;
+  @include center;
+  p{
+    font-size: 2.5rem;
+  }
+}

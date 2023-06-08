@@ -1,0 +1,26 @@
+.search-result, .error-404{
+    padding-top: 200px;
+    
+    .page-header{
+        @include flex;
+        @include center;
+    }
+    .page-content{
+        @include flex;
+        @include center;
+        p{
+            font-size: 1.6rem;
+        }
+    }
+    form{
+        @include flex;
+        @include center;
+        width: 100%;
+        padding-bottom: 200px;
+    }
+ 
+}
+
+.entry-header{
+    text-align: center;
+}

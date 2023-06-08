@@ -1,74 +1,25 @@
 <?php
-/**
- * samarytanin functions and definitions
- *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package samarytanin
- */
-
 if ( ! defined( 'SAMARYTANIN_VERSION' ) ) {
-	// Replace the version number of the theme on each release.
 	define( 'SAMARYTANIN_VERSION', '1.0.0' );
 }
 
-/**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
- */
 function samarytanin_setup() {
-	/*
-		* Make theme available for translation.
-		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on _s, use a find and replace
-		* to change '_s' to the name of your theme in all the template files.
-		*/
+
 	load_theme_textdomain( 'samarytanin', get_template_directory() . '/languages' );
 
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
-
-	/*
-		* Let WordPress manage the document title.
-		* By adding theme support, we declare that this theme does not use a
-		* hard-coded <title> tag in the document head, and expect WordPress to
-		* provide it for us.
-		*/
 	add_theme_support( 'title-tag' );
 	
-	/** automatic feed link*/
     add_theme_support( 'automatic-feed-links' );
 
-	 /** post formats */
     $post_formats = array('aside','image','gallery','video','audio','link','quote','status');
     add_theme_support( 'post-formats', $post_formats);
 	
-	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
-	/**
-	 * Register support for Gutenberg wide images in your theme
-	 */
-	function mytheme_setup() {
 	add_theme_support( 'align-wide' );
-	}
-	add_action( 'after_setup_theme', 'mytheme_setup' );
 	
-	// Add theme support for editor styles, gutenberg blocks
-	add_theme_support('editor-styles');
-	add_editor_style( 'editor-style.css' );
-
-	/*
-		* Enable support for Post Thumbnails on posts and pages.
-		*
-		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		*/
 	add_theme_support( 'post-thumbnails' );
 
-	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__( 'Primary', 'samarytanin' ),
@@ -77,10 +28,6 @@ function samarytanin_setup() {
 		)
 	);
 
-	/*
-		* Switch default core markup for search form, comment form, and comments
-		* to output valid HTML5.
-		*/
 	add_theme_support(
 		'html5',
 		array(
@@ -94,7 +41,6 @@ function samarytanin_setup() {
 		)
 	);
 
-	// Set up the WordPress core custom background feature.
 	add_theme_support(
 		'custom-background',
 		apply_filters(
@@ -106,11 +52,6 @@ function samarytanin_setup() {
 		)
 	);
 
-	/**
-	 * Add support for core custom logo.
-	 *
-	 * @link https://codex.wordpress.org/Theme_Logo
-	 */
 	add_theme_support(
 		'custom-logo',
 		array(
@@ -123,29 +64,17 @@ function samarytanin_setup() {
 }
 add_action( 'after_setup_theme', 'samarytanin_setup' );
 
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
 function samarytanin_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'samarytanin_content_width', 640 );
 }
 add_action( 'after_setup_theme', 'samarytanin_content_width', 0 );
 
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
 function samarytanin_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', '_s' ),
+			'name'          => esc_html__( 'Sidebar', 'samarytanin' ),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', '_s' ),
+			'description'   => esc_html__( 'Add widgets here.', 'samarytanin' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -155,13 +84,8 @@ function samarytanin_widgets_init() {
 }
 add_action( 'widgets_init', 'samarytanin_widgets_init' );
 
-/**
- * Enqueue scripts and styles.
- */
-
 function enqueue_samarytanin_scripts() {
 
-	
     $cssFilePath = glob( get_stylesheet_directory() . '/css/build/main.min.*.css' );
     $cssFileURI = get_stylesheet_directory_uri() . '/css/build/' . basename($cssFilePath[0]);
     wp_enqueue_style( 'main_css', $cssFileURI );
@@ -178,17 +102,45 @@ function enqueue_samarytanin_scripts() {
     // ));
 
   }
-  add_action( 'wp_enqueue_scripts', 'enqueue_samarytanin_scripts' );
+add_action( 'wp_enqueue_scripts', 'enqueue_samarytanin_scripts' );
+
+
+function wpdocs_theme_add_editor_styles() {
+
+	$cssFilePath = glob( get_stylesheet_directory() . '/css/build/main.min.*.css' );
+    $cssFileURI = get_stylesheet_directory_uri() . '/css/build/' . basename($cssFilePath[0]);
+    
+	add_theme_support('editor-styles');
+	add_editor_style($cssFileURI);
+
+}
+add_action( 'admin_init', 'wpdocs_theme_add_editor_styles' );
 
 /**
- * Customizer additions.
+ * Add inline css editor width
  */
+
+function editor_full_width_gutenberg() {
+  echo '<style>
+    body.gutenberg-editor-page .editor-post-title__block, body.gutenberg-editor-page .editor-default-block-appender, body.gutenberg-editor-page .editor-block-list__block {
+		max-width: none !important;
+	}
+    .block-editor__container .wp-block {
+        max-width: none !important;
+    }
+    /*code editor*/
+    .edit-post-text-editor__body {
+    	max-width: none !important;	
+    	margin-left: 2%;
+    	margin-right: 2%;
+    }
+  </style>';
+}
+
+add_action('admin_head', 'editor_full_width_gutenberg');
+
 require get_template_directory() . '/inc/customizer.php';
 
 require get_template_directory() . '/inc/my-customizer.php';
-
-/**
- * Load gutenberg blocks.
- */
 
 require get_template_directory() . '/blocks/register-acf-blocks.php';
