@@ -12,7 +12,7 @@ get_header(); ?>
  
                 <header class="page-header">
                     <h1 class="page-title">
-						<?php _e( 'Wyniki wyszukiwania dla: ', 'samarytanin' ); echo get_search_query(); ?>
+						<?php esc_html_e( 'Wyniki wyszukiwania dla: ', 'samarytanin' ); echo get_search_query(); ?>
 					</h1>
                 </header>
 
@@ -25,7 +25,7 @@ get_header(); ?>
  
             <?php else : ?>
 				<div class="no-site-content">
-					<p><?php _e( 'Brak wyników, spróbuj wyszukac inne hasło', 'samarytanin' ); ?></p>
+					<p><?php esc_html_e( 'Brak wyników, spróbuj wyszukac inne hasło', 'samarytanin' ); ?></p>
 				</div>
  
             <?php endif; ?>

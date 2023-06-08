@@ -11,8 +11,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<meta name="description" content="Fundacja Samarytanin, profesjonalna opieka nad osobami starszymi, niepełnosprawnymi, wykluczonymi w Mielcu i okolicach. Opieka w zakresie zaspokajania codziennych potrzeb życiowych, higieniczno-sanitarnym, pielęgnacji zleconej przez lekarza, podtrzymywaniu psychofizycznej kondycji osoby, opieka godzinowa. Mielec, Powiat Mielecki, Agnieszka Godek, Barbara Bielatowicz. ">
-    <meta name="keywords" content="Fundacja Samarytanin, profesjonalna opieka nad osobami starszymi, niepełnosprawnymi, wykluczonymi w Mielcu i okolicach. Opieka w zakresie zaspokajania codziennych potrzeb życiowych, higieniczno-sanitarnym, pielęgnacji zleconej przez lekarza, podtrzymywaniu psychofizycznej kondycji osoby, opieka godzinowa. Mielec, Powiat Mielecki, Agnieszka Godek, Barbara Bielatowicz. ">
+	<!-- <meta name="description" content="Fundacja Samarytanin, profesjonalna opieka nad osobami starszymi, niepełnosprawnymi, wykluczonymi w Mielcu i okolicach. Opieka w zakresie zaspokajania codziennych potrzeb życiowych, higieniczno-sanitarnym, pielęgnacji zleconej przez lekarza, podtrzymywaniu psychofizycznej kondycji osoby, opieka godzinowa. Mielec, Powiat Mielecki, Agnieszka Godek, Barbara Bielatowicz. ">
+    <meta name="keywords" content="Fundacja Samarytanin, profesjonalna opieka nad osobami starszymi, niepełnosprawnymi, wykluczonymi w Mielcu i okolicach. Opieka w zakresie zaspokajania codziennych potrzeb życiowych, higieniczno-sanitarnym, pielęgnacji zleconej przez lekarza, podtrzymywaniu psychofizycznej kondycji osoby, opieka godzinowa. Mielec, Powiat Mielecki, Agnieszka Godek, Barbara Bielatowicz. "> -->
         
     
 	<?php wp_head(); ?>
