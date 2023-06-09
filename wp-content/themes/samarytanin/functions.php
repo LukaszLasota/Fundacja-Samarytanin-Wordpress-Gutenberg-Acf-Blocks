@@ -86,12 +86,12 @@ add_action( 'widgets_init', 'samarytanin_widgets_init' );
 
 function enqueue_samarytanin_scripts() {
 
-    $cssFilePath = glob( get_stylesheet_directory() . '/css/build/main.min.*.css' );
-    $cssFileURI = get_stylesheet_directory_uri() . '/css/build/' . basename($cssFilePath[0]);
+    $cssFilePath = glob( get_stylesheet_directory() . '/assets/build/css/main.min.*.css' );
+    $cssFileURI = get_stylesheet_directory_uri() . '/assets/build/css/' . basename($cssFilePath[0]);
     wp_enqueue_style( 'main_css', $cssFileURI );
 
-    $jsFilePath = glob( get_stylesheet_directory() . '/js/build/main.min.*.js' );
-    $jsFileURI = get_stylesheet_directory_uri() . '/js/build/' . basename($jsFilePath[0]);
+    $jsFilePath = glob( get_stylesheet_directory() . '/assets/build/js/main.min.*.js' );
+    $jsFileURI = get_stylesheet_directory_uri() . '/assets/build/js/' . basename($jsFilePath[0]);
     wp_enqueue_script( 'main_js', $jsFileURI , null , null , true );
 
     // wp_localize_script('main_js', 'wpApiSettings', array(
@@ -107,8 +107,8 @@ add_action( 'wp_enqueue_scripts', 'enqueue_samarytanin_scripts' );
 
 function wpdocs_theme_add_editor_styles() {
 
-	$cssFilePath = glob( get_stylesheet_directory() . '/css/build/main.min.*.css' );
-    $cssFileURI = get_stylesheet_directory_uri() . '/css/build/' . basename($cssFilePath[0]);
+	$cssFilePath = glob( get_stylesheet_directory() . '/assets/build/css/main.min.*.css' );
+    $cssFileURI = get_stylesheet_directory_uri() . '/assets/build/css/' . basename($cssFilePath[0]);
     
 	add_theme_support('editor-styles');
 	add_editor_style($cssFileURI);

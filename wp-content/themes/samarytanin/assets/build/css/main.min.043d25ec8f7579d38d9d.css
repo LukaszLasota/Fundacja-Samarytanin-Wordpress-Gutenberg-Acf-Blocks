@@ -13,7 +13,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 */
 @font-face {
   font-family: "Didot";
-  src: url("../.././css/build/font/Didot%20Regular.ttf");
+  src: url("../../.././assets/css/build/font/Didot%20Regular.ttf");
 }
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -552,6 +552,7 @@ figure {
 }
 .search-result, .error-404 {
   padding-top: 200px;
+  font-weight: 700;
 }
 .search-result .page-header, .error-404 .page-header {
   display: flex;
@@ -593,6 +594,15 @@ a:focus {
 }
 a:hover, a:active {
   outline: 0;
+}
+
+.privacy {
+  padding: 150px 7% 200px;
+}
+.privacy p, .privacy li {
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: justify;
 }
 
 /* Navigation

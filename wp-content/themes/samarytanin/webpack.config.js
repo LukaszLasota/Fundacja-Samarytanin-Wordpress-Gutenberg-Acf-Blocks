@@ -17,7 +17,7 @@ module.exports = [
       ]
     },
     output: {
-      filename: './js/build/[name].min.[fullhash].js',
+      filename: './assets/build/js/[name].min.[fullhash].js',
       path: path.resolve(__dirname)
     },
     module: {
@@ -38,7 +38,7 @@ module.exports = [
           test: /\.(woff|woff2|eot|ttf|otf)$/,
           type: 'asset/resource',
           generator: {
-            filename: './css/build/font/[name][ext]',
+            filename: './assets/css/build/font/[name][ext]',
           }
         },
         // loader for images and icons (only required if css references image files)
@@ -46,7 +46,7 @@ module.exports = [
           test: /\.(png|jpg|gif|svg)$/,
           type: 'asset/resource',
           generator: {
-            filename: './css/build/img/[name][ext]',
+            filename: './assets/build/css/img/[name][ext]',
           }
         },
       ]
@@ -55,13 +55,13 @@ module.exports = [
       // clear out build directories on each build
       new CleanWebpackPlugin({
         cleanOnceBeforeBuildPatterns: [
-          './js/build/*',
-          './css/build/*'
+          './build/js/*',
+          './build/css/*'
         ]
       }),
       // css extraction into dedicated file
       new MiniCssExtractPlugin({
-        filename: './css/build/main.min.[fullhash].css'
+        filename: './assets/build/css/main.min.[fullhash].css'
       }),
       new Webpack.ProvidePlugin({
         $: "jquery",
